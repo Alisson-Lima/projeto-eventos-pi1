@@ -1,20 +1,17 @@
 import java.util.Scanner;
-// public Scanner myObj = new Scanner(System.in);
+
 public class Main {
+    private static Scanner userPrompt = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner myObj = new Scanner(System.in);
-        initMenu();
+
+        welcomeMsg();
         
-
-
-        myObj.close();
     }
-    
-    public static void initMenu(){
-        
-        Scanner myObj = new Scanner(System.in);
-        
-        System.out.println("|===============================|\n"+
+
+    public static void welcomeMsg(){
+        System.out.println(
+        "|===============================|\n"+
         "|                               |\n"+
         "|                               |\n"+
         "|                               |\n"+
@@ -23,133 +20,222 @@ public class Main {
         "|     A plataforma de Eventos   |\n"+
         "|          Project X            |\n"+
         "|                               |\n"+
-        "|                               |\n"+      
+        "|                               |");
+        mainMenuOptions();
+    }
+    
+    public static void mainMenuOptions(){
+        System.out.println(
+        "|===============================|\n"+
         "|                               |\n"+
-        "|          Criar Evento         |\n"+
-        "|   Selecione uma das opções :  |\n"+
+        "|   Selecione uma das opções:   |\n"+
         "|   1 - SHOW                    |\n"+
         "|   2 - REUNIÃO                 |\n"+
         "|   3 - FESTA                   |\n"+
         "|   4 - COMÍCIO                 |\n"+
         "|   5 - SAIR                    |\n"+
         "|                               |\n"+
-        "|                               |\n"+
-        "|                               |\n"+
-        "|===============================|"); 
+        "|===============================|\n"); 
+        getUserChoice();
+    }
 
-         System.out.println("Digite a Opção desejada: ");
-        String optionSelect = myObj.nextLine();
+    public static void getUserChoice(){
+
+        String optionSelect = userPrompt.nextLine();
         switch (optionSelect) {
             case "1":
-                selecShow();
+                selectShow();
                 break;
             case "2":
-                selecReuniao();
+                selectReuniao();
                 break;
             case "3":
-                selecFesta();
+                selectFesta();
                 break;
             case "4":
-                selecComicio();
+                selectComicio();
                 break;
             case "5":
-               exitProg();
+                exit();
                 break;
-        }
-        myObj.close();
-    }
-    public static void selecShow(){
-          Scanner myObj = new Scanner(System.in);
-          System.out.println("|===============================|\n"+
-                             "|                               |\n"+
-                             "|        OPÇÕES DO MENU         |\n"+
-                             "|                               |\n"+
-                             "|       1 - CRIAR SHOW          |\n"+
-                             "|       2 - PESQUISAR SHOW      |\n"+
-                             "|       3 - MENU PRINCIPAL      |\n"+
-                             "|       4 - SAIR                |\n"+
-                             "|                               |\n"+
-                             "|                               |\n"+
-                             "|===============================|"); 
-          String optionMenuShow = myObj.nextLine();
+            default: 
+                System.out.println("Opção inválida! Escolha uma opção de 1 a 5! \n");
+                mainMenuOptions();
 
-            switch (optionMenuShow) {
-                case "1":
-                    System.out.println("CRIAR SHOW");
-                break;
-            
-                case "2":
+        }
+       
+    }
+    
+    public static void selectShow(){
+
+        System.out.println("|===============================|\n"+
+                            "|                               |\n"+
+                            "|   OPÇÕES DO MENU SHOW:        |\n"+
+                            "|                               |\n"+
+                            "|   1 - CRIAR SHOW              |\n"+
+                            "|   2 - PESQUISAR SHOW          |\n"+
+                            "|   3 - MENU PRINCIPAL          |\n"+
+                            "|   4 - SAIR                    |\n"+
+                            "|                               |\n"+
+                            "|===============================|\n"); 
+        String optionMenuShow = userPrompt.nextLine();
+
+        switch (optionMenuShow) {
+            case "1":
+                System.out.println("CRIAR SHOW");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "2":
                 System.out.println("PESQUISAR SHOW");
-                break;
-            
-                case "3":
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "3":
                 System.out.println("VOLTANDO PARA O MENU");
-                initMenu();
-                break;
-            
-                default:
-                    break;
-            }
-          System.out.println("Deseja continuar: (S)im ou (N)ão");
-          String optionContinue = myObj.nextLine();
-    
-          System.out.println(optionContinue);
-            switch(optionContinue){
-                case "S":
-                    initMenu();
-                case "N":
-                    exitProg();
-            }
-            myObj.close();
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "4":
+                exit();
+            break;
+            default:
+                System.out.println("Opção inválida! Voltando para o início...\n");
+                mainMenuOptions();
+        }
+
     }
-    public static void selecReuniao(){
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("opt Reunião");
-        System.out.println("Deseja continuar: (S)im ou (N)ão");
-          String optionContinue = myObj.nextLine();
-    
-          System.out.println(optionContinue);
-            switch(optionContinue){
-                case "S":
-                    initMenu();
-                case "N":
-                    exitProg();
-            }
-            myObj.close();
+
+    public static void selectReuniao(){
+        System.out.println("|===============================|\n"+
+                            "|                               |\n"+
+                            "|   OPÇÕES DO MENU REUNIÃO:     |\n"+
+                            "|                               |\n"+
+                            "|   1 - CRIAR REUNIÃO           |\n"+
+                            "|   2 - PESQUISAR REUNIÃO       |\n"+
+                            "|   3 - MENU PRINCIPAL          |\n"+
+                            "|   4 - SAIR                    |\n"+
+                            "|                               |\n"+
+                            "|===============================|\n"); 
+        String optionMenuShow = userPrompt.nextLine();
+
+        switch (optionMenuShow) {
+            case "1":
+                System.out.println("CRIAR REUNIÃO");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "2":
+                System.out.println("PESQUISAR REUNIÃO");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "3":
+                System.out.println("VOLTANDO PARA O MENU");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "4":
+                exit();
+            break;
+            default:
+                System.out.println("Opção inválida! Voltando para o início...\n");
+                mainMenuOptions();
+        }
     }
-    public static void selecFesta(){
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("opt Festa");
-        System.out.println("Deseja continuar: (S)im ou (N)ão");
-          String optionContinue = myObj.nextLine();
-    
-          System.out.println(optionContinue);
-            switch(optionContinue){
-                case "S":
-                    initMenu();
-                case "N":
-                    exitProg();
-            }
-            myObj.close();
+
+    public static void selectFesta(){
+       System.out.println("|===============================|\n"+
+                            "|                               |\n"+
+                            "|   OPÇÕES DO MENU FESTA:       |\n"+
+                            "|                               |\n"+
+                            "|   1 - CRIAR FESTA             |\n"+
+                            "|   2 - PESQUISAR FESTA         |\n"+
+                            "|   3 - MENU PRINCIPAL          |\n"+
+                            "|   4 - SAIR                    |\n"+
+                            "|                               |\n"+
+                            "|===============================|\n"); 
+        String optionMenuShow = userPrompt.nextLine();
+
+        switch (optionMenuShow) {
+            case "1":
+                System.out.println("CRIAR FESTA");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "2":
+                System.out.println("PESQUISAR FESTA");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "3":
+                System.out.println("VOLTANDO PARA O MENU");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "4":
+                exit();
+            break;
+            default:
+                System.out.println("Opção inválida! Voltando para o início...\n");
+                mainMenuOptions();
+        }
     }
-    public static void selecComicio(){
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("opt Comicio");
-        System.out.println("Deseja continuar: (S)im ou (N)ão");
-          String optionContinue = myObj.nextLine();
-    
-          System.out.println(optionContinue);
-            switch(optionContinue){
-                case "S":
-                    initMenu();
-                case "N":
-                    exitProg();
-            }
-            myObj.close();
+
+    public static void selectComicio(){
+        System.out.println("|===============================|\n"+
+                            "|                               |\n"+
+                            "|   OPÇÕES DO MENU COMICIO:     |\n"+
+                            "|                               |\n"+
+                            "|   1 - CRIAR COMICIO           |\n"+
+                            "|   2 - PESQUISAR COMICIO       |\n"+
+                            "|   3 - MENU PRINCIPAL          |\n"+
+                            "|   4 - SAIR                    |\n"+
+                            "|                               |\n"+
+                            "|===============================|\n"); 
+        String optionMenuShow = userPrompt.nextLine();
+
+        switch (optionMenuShow) {
+            case "1":
+                System.out.println("CRIAR COMICIO");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "2":
+                System.out.println("PESQUISAR COMICIO");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "3":
+                System.out.println("VOLTANDO PARA O MENU");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "4":
+                exit();
+            break;
+            default:
+                System.out.println("Opção inválida! Voltando para o início...\n");
+                mainMenuOptions();
+        }
     }
-    public static void exitProg(){
-        System.out.println("opt Exit");
+
+    public static void exit(){
+        System.out.println("Finalizando programa...");
         System.exit(0);
     }
+
 }
 
