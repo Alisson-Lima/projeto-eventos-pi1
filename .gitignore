@@ -1,0 +1,165 @@
+    public static void selectShow(){
+
+        System.out.println("|===============================|\n"+
+                            "|                               |\n"+
+                            "|   OPÇÕES DO MENU SHOW:        |\n"+
+                            "|                               |\n"+
+                            "|   1 - CRIAR SHOW              |\n"+
+                            "|   2 - PESQUISAR SHOW          |\n"+
+                            "|   3 - MENU PRINCIPAL          |\n"+
+                            "|   4 - SAIR                    |\n"+
+                            "|                               |\n"+
+                            "|===============================|\n"); 
+        String optionMenuShow = userPrompt.nextLine();
+
+        switch (optionMenuShow) {
+            case "1":
+                System.out.println("CRIAR SHOW");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "2":
+                System.out.println("PESQUISAR SHOW");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "3":
+                System.out.println("VOLTANDO PARA O MENU");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "4":
+                exit();
+            break;
+            default:
+                System.out.println("Opção inválida! Voltando para o início...\n");
+                mainMenuOptions();
+        }
+
+    }
+
+    public static void selectReuniao(){
+        System.out.println("|===============================|\n"+
+                            "|                               |\n"+
+                            "|   OPÇÕES DO MENU REUNIÃO:     |\n"+
+                            "|                               |\n"+
+                            "|   1 - CRIAR REUNIÃO           |\n"+
+                            "|   2 - PESQUISAR REUNIÃO       |\n"+
+                            "|   3 - MENU PRINCIPAL          |\n"+
+                            "|   4 - SAIR                    |\n"+
+                            "|                               |\n"+
+                            "|===============================|\n"); 
+        String optionMenuShow = userPrompt.nextLine();
+
+        switch (optionMenuShow) {
+            case "1":
+                System.out.println("CRIAR REUNIÃO");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "2":
+                System.out.println("PESQUISAR REUNIÃO");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "3":
+                System.out.println("VOLTANDO PARA O MENU");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "4":
+                exit();
+            break;
+            default:
+                System.out.println("Opção inválida! Voltando para o início...\n");
+                mainMenuOptions();
+        }
+    }
+
+    public static void selectFesta(){
+       System.out.println("|===============================|\n"+
+                            "|                               |\n"+
+                            "|   OPÇÕES DO MENU FESTA:       |\n"+
+                            "|                               |\n"+
+                            "|   1 - CRIAR FESTA             |\n"+
+                            "|   2 - PESQUISAR FESTA         |\n"+
+                            "|   3 - MENU PRINCIPAL          |\n"+
+                            "|   4 - SAIR                    |\n"+
+                            "|                               |\n"+
+                            "|===============================|\n"); 
+        String optionMenuShow = userPrompt.nextLine();
+
+        switch (optionMenuShow) {
+            case "1":
+                System.out.println("CRIAR FESTA");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "2":
+                System.out.println("PESQUISAR FESTA");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "3":
+                System.out.println("VOLTANDO PARA O MENU");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "4":
+                exit();
+            break;
+            default:
+                System.out.println("Opção inválida! Voltando para o início...\n");
+                mainMenuOptions();
+        }
+    }
+
+    public static void selectComicio(){
+        System.out.println("|===============================|\n"+
+                            "|                               |\n"+
+                            "|   OPÇÕES DO MENU COMICIO:     |\n"+
+                            "|                               |\n"+
+                            "|   1 - CRIAR COMICIO           |\n"+
+                            "|   2 - PESQUISAR COMICIO       |\n"+
+                            "|   3 - MENU PRINCIPAL          |\n"+
+                            "|   4 - SAIR                    |\n"+
+                            "|                               |\n"+
+                            "|===============================|\n"); 
+        String optionMenuShow = userPrompt.nextLine();
+
+        switch (optionMenuShow) {
+            case "1":
+                System.out.println("CRIAR COMICIO");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "2":
+                System.out.println("PESQUISAR COMICIO");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "3":
+                System.out.println("VOLTANDO PARA O MENU");
+                System.out.println("(FUNÇÃO EM DESENVOLVIMENTO)");
+                System.out.println("Voltando para o início...");
+                mainMenuOptions();
+            break;
+            case "4":
+                exit();
+            break;
+            default:
+                System.out.println("Opção inválida! Voltando para o início...\n");
+                mainMenuOptions();
+        }
+    }
