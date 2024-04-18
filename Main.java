@@ -16,21 +16,57 @@ public class Main {
         
     }
     public static void loginVerificate(){
-        if (loginInfosKey == false) {
-            System.out.println("Olá, Verificamos que você não possui uma sessão ativa no sistema!\n"+
-            "Por favor efetue o Login");
-            System.out.print("Digite seu Nome de Usuario: ");
-            String nameUser = userPrompt.nextLine();
-            System.out.print("Digite sua Senha: ");
-            String passUser = userPrompt.nextLine();
-
-            if (nameUser.equals(loginUserInfosVar) && passUser.equals(loginPassInfosVar) ) {
-                loginInfosKey = true;
-                welcomeMsg();
+        while (loginInfosKey == false) {
+            System.out.print(
+                "=========================================================\n");
+                System.out.println("|            Olá, Aguarde enquanto Verificamos          |"); 
+                for(int i=90;i<100; i++){}
+                System.out.print( "=========================================================\n");
+                     
+            System.out.println("Você não possui uma sessão ativa no sistema!\n"+
+            "Por favor efetue o Login\n"+"Ou faça o cadastro");
+            System.out.println("Opções\n"+"1 - Login \n"+"2 - Cadastro\n"+"3 - Sair"); 
+            
+            int opcaoMenuLog = userPrompt.nextInt();
+            if (opcaoMenuLog == 1) {
+                System.out.println("Digite seu Nome de Usuario: ");
+                String nameUser = userPrompt.next();
+                System.out.println("Digite sua Senha: ");
+                String passUser = userPrompt.next();
+                if (nameUser.equals(loginUserInfosVar) && passUser.equals(loginPassInfosVar) ) {
+                    loginInfosKey = true;
+                    welcomeMsg();
+                }
             }
-        }else{
-            welcomeMsg();
+            else if(opcaoMenuLog == 2){
+                System.out.println("Bem-Vindo a area de cadastro!! ");
+                System.out.println("Digite o Nome de Usuario que deseja: ");
+                
+                String nameUser2 = userPrompt.next();
+
+                System.out.println("Digite a sua Senha de preferencia: ");
+                String passUser = userPrompt.next();
+                
+                System.out.println("Digite novamente a sua Senha: ");
+                String passUserConfirm = userPrompt.next();
+
+                if (passUser.equals(passUserConfirm)) {
+                    // System.out.println(nameString);
+                    loginInfosKey = true;
+                    System.out.println("Parabéns Sr/Sra "+nameUser2+" As senhas estão iguais");
+
+                }
+            }
+            else if( opcaoMenuLog == 3){
+                exit();
+            }else{
+
+                System.out.println("Opção invalida!!");
+            }
+
         }
+            welcomeMsg();
+        
     }
     public static void welcomeMsg(){
         System.out.println(
