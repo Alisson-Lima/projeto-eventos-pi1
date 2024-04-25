@@ -1,4 +1,4 @@
-
+package MainPackage;
 
 //import com.mycompany.show.Show.LerDados;//Aqui vou substituir para o package do arquivo
 
@@ -16,10 +16,10 @@ public class Comicio {
             for(int c = 0 ; c < 5; c++)
             {
                 System.out.println("Escreva " + informationRegister[c] + " do evento:");
-                totalInformation[c] = LerDados.readString("Tente novamente: ");
+                //totalInformation[c] = LerDados.readString("Tente novamente: ");
                 /*showInformation = totalInformation[c]+ " " + showInformation;*/
         }   System.out.println("Você tem autorização para realizar esse comicio?  [S]sim/[n]Não");
-            opcao = LerDados.readString("Tente novamente: ");
+            //opcao = LerDados.readString("Tente novamente: ");
             if(opcao.toUpperCase().equals("S")){
                 System.out.println("Otimo, Bom Trabalho");
                  autorizacao = true;

@@ -1,4 +1,4 @@
-//package meupacote.java;
+package MainPackage;
 
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
