@@ -56,7 +56,7 @@ public class Main {
                 if (passUser.equals(passUserConfirm)) {
                     loginUserInfosVar[arrayUserNameLenght+1].add(nameUser2);
                     loginPassInfosVar[arrayUserNameLenght+1].add(passUser);
-                    // System.out.println(nameString);
+                    // System.out.println(nameString); update
 
 //                    loginInfosKey = true;
                     loginVerificate();
