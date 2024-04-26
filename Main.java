@@ -54,8 +54,8 @@ public class Main {
                 String passUserConfirm = userPrompt.next();
 
                 if (passUser.equals(passUserConfirm)) {
-                    loginUserInfosVar[arrayUserNameLenght+1].add(nameUser2);
-                    loginPassInfosVar[arrayUserNameLenght+1].add(passUser);
+                    //loginUserInfosVar[arrayUserNameLenght+1].add(nameUser2);
+                    //loginPassInfosVar[arrayUserNameLenght+1].add(passUser);
                     // System.out.println(nameString);
 
 //                    loginInfosKey = true;
