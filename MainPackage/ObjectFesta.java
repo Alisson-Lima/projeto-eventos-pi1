@@ -2,17 +2,17 @@ package MainPackage;
 
 import  java.util.List;
 import java.util.ArrayList;
-import java.util.Optional;
 
-public record FestaObject (
+public record ObjectFesta(
 
-//        int ID,
+//      int ID,
         String Nome,
         String Data,
         String Horario,
         String Local,
         String Descricao,
         int Limite_Participantes,
+//        String[] Participantes,
         boolean Disponivel
 
 ){
@@ -23,7 +23,11 @@ public record FestaObject (
 //        ID = nextID++;
 //    }
 
-    private static final int CAMPOS = FestaObject.class.getRecordComponents().length;
+//    public FestaObject {
+//        Participantes = new String[Limite_Participantes];
+//    }
+
+    private static final int CAMPOS = ObjectFesta.class.getRecordComponents().length;
 
     public List<String> desconstruir() {
 
@@ -31,20 +35,23 @@ public record FestaObject (
     }
 
 
-    public static List<String> desconstruirTodos(List<FestaObject> todos) {
+    public static List<String> desconstruirTodos(List<ObjectFesta> todos) {
+
         var listona = new ArrayList<String>(todos.size() * CAMPOS);
-        for (var v : todos) {
-            listona.addAll(v.desconstruir());
+
+        for (var f : todos) {
+            listona.addAll(f.desconstruir());
         }
+
         return listona;
     }
 
 
-    public static FestaObject construir(List<String> listinha) {
+    public static ObjectFesta construir(List<String> listinha) {
 
         if (listinha.size() != CAMPOS) throw new IllegalArgumentException();
 
-        return new FestaObject(
+        return new ObjectFesta(
 
                 listinha.get(0),
                 listinha.get(1),
@@ -52,20 +59,26 @@ public record FestaObject (
                 listinha.get(3),
                 listinha.get(4),
                 Integer.parseInt(listinha.get(5)),
+//                new String[]{listinha.get(6)},
                 Boolean.parseBoolean(listinha.get(6))
 
         );
     }
 
 
-    public static List<FestaObject> construirTodos (List<String> listona) {
+    public static List<ObjectFesta> construirTodos (List<String> listona) {
+
         if (listona.size() % CAMPOS != 0) throw new IllegalArgumentException();
-        var resultado = new ArrayList<FestaObject>(listona.size() / CAMPOS);
+
+        var resultado = new ArrayList<ObjectFesta>(listona.size() / CAMPOS);
+
         for (int i = 0; i < listona.size(); i += CAMPOS) {
+
             var listinha = listona.subList(i, i + CAMPOS);
             var elemento = construir(listinha);
             resultado.add(elemento);
         }
+
         return resultado;
     }
 
