@@ -6,13 +6,13 @@ public class Txt_Festa {
 
     private static final String FILE = "Festa.txt";
 
-    public static List<FestaObject> lerTudo() {
+    public static List<ObjectFesta> lerTudo() {
         var listona = File.lerLinhas(FILE);
-        return FestaObject.construirTodos(listona);
+        return ObjectFesta.construirTodos(listona);
     }
 
-    public static void salvarTudo(List<FestaObject> tudo) {
-        var listona = FestaObject.desconstruirTodos(tudo);
+    public static void salvarTudo(List<ObjectFesta> tudo) {
+        var listona = ObjectFesta.desconstruirTodos(tudo);
         File.escreverLinhas(listona, FILE);
     }
 
@@ -23,7 +23,7 @@ public class Txt_Festa {
 //        return deletou;
 //    }
 
-    public static void salvar(FestaObject registro) {
+    public static void salvar(ObjectFesta registro) {
         var tudo = lerTudo();
         tudo.add(registro);
         salvarTudo(tudo);
