@@ -4,18 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CriarComicio {
-    public static class Comicio{
-        private static int nextID = 1;
+public record ObjectComicio
+            (
+        String Nome,
+        String Data,
+        String Horario,
+        String Local,
+        String Partido,
+        String Descricao,
+        Boolean Autorizacao){
 
-        int id;
-        String Nome;
-        String Data;
-        String Horario;
-        String Local;
-        String Partido;
-        String Descricao;
-        Boolean Autorizacao;
+
+
+            private static final int CAMPOS = ObjectComicio.class.getRecordComponents().length;
+
+
+    public List<String> desconstruir() {
+        return List.of(Nome,Data,Horario,Local,Partido, Descricao, "" + Autorizacao);
+    }
 
         public Comicio(String Nome, String Data, String Horario, String Local, String Partido, String Descricao,Boolean Autorizacao){
             this.id = nextID++;
@@ -31,12 +37,12 @@ public class CriarComicio {
         }
 
     }
-
+/*
     public static List<Comicio> addComicio(){
         lerDados ler = new lerDados();
 
         boolean select = true;
-        List<CriarComicio.Comicio> comicios = new ArrayList<>();
+        List<ObjectComicio.Comicio> comicios = new ArrayList<>();
 
         while(select){
             System.out.println("\nDigite o nome do comício:");
@@ -63,7 +69,7 @@ public class CriarComicio {
             boolean conversao_Disponivel =  autorizacaoComicio.toUpperCase().equals("S")  ||
                     autorizacaoComicio.toUpperCase().equals("SIM") ? true : false;
 
-            comicios.add(new CriarComicio.Comicio(nomeComicio, dataComicio, horarioComicio, localComicio,paritdoComicio, descricaoComicio, conversao_Disponivel));
+            comicios.add(new ObjectComicio.Comicio(nomeComicio, dataComicio, horarioComicio, localComicio,paritdoComicio, descricaoComicio, conversao_Disponivel));
 
             System.out.println("\nDeseja Adicionar outro comício? (S/N)");
             String optionAdicionar_OutroEvento = ler.lerTexto("\nPreencha o campo!:\n");
@@ -77,5 +83,5 @@ public class CriarComicio {
             }
 
         }return comicios;
-    }
-}
+    }*/
+
