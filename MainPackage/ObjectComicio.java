@@ -2,6 +2,7 @@ package MainPackage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public record ObjectComicio
@@ -20,23 +21,55 @@ public record ObjectComicio
 
 
     public List<String> desconstruir() {
-        return List.of(Nome,Data,Horario,Local,Partido, Descricao, "" + Autorizacao);
+        return List.of(Nome,Data,Horario,Local,Partido,Descricao, "" + Autorizacao);
     }
 
-        public Comicio(String Nome, String Data, String Horario, String Local, String Partido, String Descricao,Boolean Autorizacao){
-            this.id = nextID++;
-            this.Nome = Nome;
-            this.Data = Data;
-            this.Horario = Horario;
-            this.Local = Local;
-            this.Partido = Partido;
-            this.Descricao = Descricao;
-            this.Autorizacao = Autorizacao;
 
-
+    public static List<String> desconstruirTodos(List<ObjectComicio> todos){
+        var listona = new ArrayList<String>(todos.size()*CAMPOS);
+        for(var c : todos){
+            listona.addAll(c.desconstruir());
         }
-
+        return listona;
     }
+
+    public static ObjectComicio construir(List<String> listinha) {
+        if (listinha.size() != CAMPOS) throw new IllegalArgumentException();
+        return new ObjectComicio(
+
+                listinha.get(0),
+                listinha.get(1),
+                listinha.get(2),
+                listinha.get(3),
+                listinha.get(4),
+                listinha.get(5),
+                Boolean.parseBoolean(listinha.get(6))
+        );
+    }
+    public static List<ObjectComicio> construirTodos (List<String> listona) {
+        if (listona.size() % CAMPOS != 0) throw new IllegalArgumentException();
+        var resultado = new ArrayList<ObjectComicio>(listona.size() / CAMPOS);
+        for (int i = 0; i < listona.size(); i += CAMPOS) {
+            var listinha = listona.subList(i, i + CAMPOS);
+            var elemento = construir(listinha);
+            resultado.add(elemento);
+        }
+        return resultado;
+    }
+
+    public static Optional<ObjectComicio> buscarLocal(List<ObjectComicio> tudo, String localProcurado) {
+        return tudo.stream().filter(v -> v.Local().equals(localProcurado)).findAny();
+    }
+    public static Optional<ObjectComicio> buscarhorario(List<ObjectComicio> tudo, String horarioprocurado) {
+        return tudo.stream().filter(v -> v.Horario().equals(horarioprocurado)).findAny();
+    }
+    public static Optional<ObjectComicio> buscarData(List<ObjectComicio> tudo, String dataProcurada) {
+        return tudo.stream().filter(v -> v.Data().equals(dataProcurada)).findAny();
+    }
+
+}
+
+
 /*
     public static List<Comicio> addComicio(){
         lerDados ler = new lerDados();

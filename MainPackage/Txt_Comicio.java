@@ -2,7 +2,7 @@ package MainPackage;
 
 import java.util.List;
 public class Txt_Comicio {
-    private static final String FILE = "Festa.txt";
+    private static final String FILE = "Comicio.txt";
 
     public static List<ObjectComicio> lerTudo() {
         var listona = File.lerLinhas(FILE);
