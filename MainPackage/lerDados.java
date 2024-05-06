@@ -88,4 +88,13 @@ public class lerDados {
             }
         }
     }
+
+    public static boolean lerSimNao(String tenteNovamente) {
+        while (true) {
+            var linha = lerTexto("").toUpperCase();
+            if (linha.equals("S") || linha.equals("SIM")) return true;
+            if (linha.equals("N") || linha.equals("NAO") || linha.equals("NÃO")) return false;
+            System.out.print(tenteNovamente);
+        }
+    }
 }
