@@ -2,6 +2,7 @@ package MainPackage;
 
 import java.util.Scanner;
 
+
 public class Main {
 
     /* Variaveis de uso geral */ 
@@ -150,7 +151,7 @@ public class Main {
             switch (optionSelectService) {
                 case 1:
                     System.out.println("CRIAR "+nameOfArray+"\n");
-                    mainMenuOptions();
+                    MenuShow.menuShow();
 
                     break;
                     case 2:
@@ -160,8 +161,8 @@ public class Main {
                     
                     break;
                 case 3:
-                    mainMenuOptions();
-                    break;
+                    return;
+
             
                 default:
                     printMenuOptionsOfSelectedMenu(menuOptions);
