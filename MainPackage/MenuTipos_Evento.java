@@ -1,37 +1,35 @@
 package MainPackage;
 
-public class MenuPrincipal {
+public class MenuTipos_Evento {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        PrincipalMenu();
+        MenuTiposEvento();
 
     }
 
-    public static void PrincipalMenu(){
+    public static void MenuTiposEvento(){
 
         while (true) {
 
             System.out.println(
-                            "|==================================|\n"+
+                            "\n|==================================|\n"+
                             "|                                  |\n"+
                             "|    Escolha umas das opções:      |\n"+
                             "|                                  |\n"+
-                            "|    1 - Cadastrar Novo Evento     |\n"+
-                            "|    2 - Listar Eventos            |\n"+
-                            "|    3 - Pesquisar Evento          |\n"+
-                            "|    4 - Deletar Evento            |\n"+
-                            "|    X - Voltar ao Menu Inicial    |\n"+
+                            "|    1 - Comício                   |\n"+
+                            "|    2 - Festa                     |\n"+
+                            "|    3 - Reunião                   |\n"+
+                            "|    4 - Show                      |\n"+
+                            "|    X - Voltar ao Menu Principal  |\n"+
                             "|                                  |\n"+
                             "|==================================|\n"
             );
 
             System.out.print("Digite a sua escolha: ");
-            var opcao = lerDados.lerTexto("\nPreencha o campo de escolha!").toUpperCase();
+            var opcao = lerDados.lerTexto("\nPreencha o campo de escolha!: \n").toUpperCase();
 
             if (opcao.equals("1")) {
-
-                MenuTipos_Evento.MenuTiposEvento();
 
             } else if (opcao.equals("2")) {
 

@@ -27,7 +27,7 @@ public class Cadastro_E_Login {
         var Usuario = new ObjectUser(Nome, Sobrenome, Data_Nasc, CPF_OU_CNPJ, Telefone, Email, Senha);
         Txt_User.salvar(Usuario);
 
-        System.out.println("\n-------- Usuário cadastrado! --------");
+        System.out.println("\n ---------- Usuário cadastrado! ----------");
 
     }
 
@@ -137,7 +137,7 @@ public class Cadastro_E_Login {
 
         TxtLogado.salvarTudo(teste);
 
-        System.out.println("\n-------- Usuário logado! --------");
+        System.out.println("\n---------- Usuário logado! ---------");
 
         MenuPrincipal.PrincipalMenu();
 

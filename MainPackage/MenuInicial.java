@@ -14,7 +14,7 @@ public class MenuInicial {
         while (true) {
 
             System.out.println(
-                    "|===============================|\n"+
+                            "|===============================|\n"+
                             "|                               |\n"+
                             "|    B E M - V I N D O ( A )    |\n"+
                             "|                               |\n"+
@@ -32,8 +32,8 @@ public class MenuInicial {
                             "|===============================|\n"
             );
 
-            System.out.print("\nDigite a sua escolha: ");
-            var opcao = lerDados.lerTexto("\nPreencha o campo de escolha!").toUpperCase();
+            System.out.print("Digite a sua escolha: ");
+            var opcao = lerDados.lerTexto("\nPreencha o campo de escolha!: \n").toUpperCase();
 
             if (opcao.equals("1")) {
 
