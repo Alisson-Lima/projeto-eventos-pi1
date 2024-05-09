@@ -36,7 +36,7 @@ public class MenuTipos_Evento {
             } else if (opcao.equals("3")) {
 
             } else if (opcao.equals("4")) {
-
+                MenuShow.menuShow();
             } else if (opcao.equals("X")) {
                 return;
             } else {

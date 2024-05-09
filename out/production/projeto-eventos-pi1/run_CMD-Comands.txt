@@ -1,0 +1,4 @@
+
+javac Comicio.java FestaObject.java File.java lerDados.java MenuShow.java ObjectComicio.java ObjectShow.java Txt_Comicio.java Txt_Festa.java Txt_Show.java Main.java
+
+java MainPackage.Main
