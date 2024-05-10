@@ -19,7 +19,7 @@ public class MenuInicial {
                             "|    B E M - V I N D O ( A )    |\n"+
                             "|                               |\n"+
                             "|    A Plataforma de Eventos    |\n"+
-                            "|          Project X            |\n"+
+                            "|        PROJETO BACANA         |\n"+
                             "|                               |\n"+
                             "|===============================|\n"+
                             "|                               |\n"+
