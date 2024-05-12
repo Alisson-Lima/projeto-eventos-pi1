@@ -57,64 +57,50 @@ public record ObjectComicio
         return resultado;
     }
 
-    public static Optional<ObjectComicio> buscarLocal(List<ObjectComicio> tudo, String localProcurado) {
-        return tudo.stream().filter(v -> v.Local().equals(localProcurado)).findAny();
+    public static Optional<ObjectComicio> buscarNome(List<ObjectComicio> tudo, String nomeProcurado) {
+        return tudo.stream().filter(c -> c.Nome().equals(nomeProcurado)).findAny();
     }
     public static Optional<ObjectComicio> buscarhorario(List<ObjectComicio> tudo, String horarioprocurado) {
-        return tudo.stream().filter(v -> v.Horario().equals(horarioprocurado)).findAny();
+        return tudo.stream().filter(c -> c.Horario().equals(horarioprocurado)).findAny();
     }
     public static Optional<ObjectComicio> buscarData(List<ObjectComicio> tudo, String dataProcurada) {
-        return tudo.stream().filter(v -> v.Data().equals(dataProcurada)).findAny();
+        return tudo.stream().filter(c -> c.Data().equals(dataProcurada)).findAny();
+    }
+    public static void buscarComicio() {
+        System.out.println();
+        System.out.print("Digite o nome do Comcio: ");
+        var nomesComicio = lerDados.lerTexto("Inválido");
+
+        var comicios = Txt_Comicio.lerTudo();
+        var encontrou = ObjectComicio.buscarNome(comicios, nomesComicio);
+        if (encontrou.isEmpty()) {
+            System.out.println("Não encontrei esse comicio.");
+        } else {
+            mostrarComicio(encontrou.get());
+        }
     }
 
+    private static void mostrarComicio(ObjectComicio c) {
+        System.out.println("Nome: " + c.Nome()       );
+        System.out.println("Data: " + c.Data()    );
+        System.out.println("Horario: " + c.Horario()    );
+        System.out.println("Local: " + c.Local()    );
+        System.out.println("Partido: " + c.Partido()    );
+        System.out.println("Descrição: " + c.Descricao()    );
+        System.out.println("Autorização: " + c.Autorizacao()    );
+    }
+
+    public static void listarComicios() {
+        var comicios = Txt_Comicio.lerTudo();
+        for (var c : comicios) {
+            System.out.println();
+            mostrarComicio(c);
+        }
+    }
 }
 
 
-/*
-    public static List<Comicio> addComicio(){
-        lerDados ler = new lerDados();
 
-        boolean select = true;
-        List<ObjectComicio.Comicio> comicios = new ArrayList<>();
 
-        while(select){
-            System.out.println("\nDigite o nome do comício:");
-            String nomeComicio = ler.lerTexto("\nPreencha o campo de nome do comício!:\n");
 
-            System.out.println("\nDigite a data do comício:");
-            String dataComicio = ler.lerData("\nPreencha o campo de data do comício no formato dd/mm/yyyy!:\n");
-
-            System.out.println("\nDigite o horário do comício:");
-            String horarioComicio = ler.lerHorario("\nPreencha o campo de horário do comício no formato HH:mm!:\n");
-
-            System.out.println("\nDigite o local do comício:");
-            String localComicio = ler.lerTexto("\nPreencha o campo de local do comício!:\n");
-
-            System.out.println("\nDigite o paritdo do comício:");
-            String paritdoComicio = ler.lerTexto("\nPreencha o campo com o partido do comício!:\n");
-
-            System.out.println("\nDigite a descrição do comício:");
-            String descricaoComicio = ler.lerTexto("\nPreencha o campo de descrição do comício!:\n");
-
-            System.out.println("\nO comício tem atorização? (S/N)");
-            String autorizacaoComicio = ler.lerTexto("\nPreencha o campo de disponibilidade do comício com!:\n");
-
-            boolean conversao_Disponivel =  autorizacaoComicio.toUpperCase().equals("S")  ||
-                    autorizacaoComicio.toUpperCase().equals("SIM") ? true : false;
-
-            comicios.add(new ObjectComicio.Comicio(nomeComicio, dataComicio, horarioComicio, localComicio,paritdoComicio, descricaoComicio, conversao_Disponivel));
-
-            System.out.println("\nDeseja Adicionar outro comício? (S/N)");
-            String optionAdicionar_OutroEvento = ler.lerTexto("\nPreencha o campo!:\n");
-
-            select =    optionAdicionar_OutroEvento.toUpperCase().equals("S") ||
-                    optionAdicionar_OutroEvento.toUpperCase().equals("SIM") ? true : false;
-
-            for (Comicio comicio: comicios){
-            System.out.println("\nID: " + comicio.id + "\nNome: " + comicio.Nome + "\nData: " + comicio.Data + "\nLocal: " + comicio.Local + "\nPartido: " + comicio.Partido + "\nDescrição: " +
-                        comicio.Descricao + "\nAutorização: " + comicio.Autorizacao);
-            }
-
-        }return comicios;
-    }*/
 

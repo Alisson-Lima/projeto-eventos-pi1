@@ -35,6 +35,15 @@ public class MenuPrincipal {
 
             } else if (opcao.equals("2")) {
 
+                System.out.println("_________Comicios_________");
+                ObjectComicio.listarComicios();
+                System.out.println("_________________________\n");
+                System.out.println("_________Festas_________");
+                ObjectFesta.listarFesta();
+                System.out.println("_________________________\n");
+                System.out.println("_________Shows_________");
+                ObjectShow.listarShow();
+                System.out.println("_________________________\n");
             } else if (opcao.equals("3")) {
 
             } else if (opcao.equals("4")) {

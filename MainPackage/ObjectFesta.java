@@ -2,6 +2,7 @@ package MainPackage;
 
 import  java.util.List;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public record ObjectFesta(
 
@@ -81,7 +82,46 @@ public record ObjectFesta(
 
         return resultado;
     }
+    public static Optional<ObjectFesta> buscarNome(List<ObjectFesta> tudo, String nomeProcurado) {
+        return tudo.stream().filter(f -> f.Nome().equals(nomeProcurado)).findAny();
+    }
+    public static Optional<ObjectFesta> buscarhorario(List<ObjectFesta> tudo, String horarioprocurado) {
+        return tudo.stream().filter(f -> f.Horario().equals(horarioprocurado)).findAny();
+    }
+    public static Optional<ObjectFesta> buscarData(List<ObjectFesta> tudo, String dataProcurada) {
+        return tudo.stream().filter(f -> f.Data().equals(dataProcurada)).findAny();
+    }
+    public static void buscarFesta() {
+        System.out.println();
+        System.out.print("Digite o nome da Festa: ");
+        var nomesFesta = lerDados.lerTexto("Inválido");
+        var festa = Txt_Festa.lerTudo();
+        var encontrou = ObjectFesta.buscarNome(festa, nomesFesta);
+        if (encontrou.isEmpty()) {
+            System.out.println("Não encontrei essa Festa.");
+        } else {
+            mostrarFesta(encontrou.get());
+        }
+    }
 
+    private static void mostrarFesta(ObjectFesta f) {
+        System.out.println("Nome: " + f.Nome());
+        System.out.println("Data: " + f.Data());
+        System.out.println("Horario: " + f.Horario());
+        System.out.println("Local: " + f.Local());
+        System.out.println("Descrição: " + f.Descricao());
+        System.out.println("Limite de Ingressos: " + f.Limite_Participantes());
+        System.out.println("Ingressos Disponiveis: " + f.Disponivel());
+    }
 
-
+    public static void listarFesta() {
+        var festa = Txt_Festa.lerTudo();
+        for (var f : festa) {
+            System.out.println();
+            mostrarFesta(f);
+        }
+    }
 }
+
+
+
