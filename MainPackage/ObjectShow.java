@@ -18,7 +18,7 @@ public record ObjectShow (
 
 
         public List<String> desconstruir() {
-            return List.of(nome,data,local,horario,"" + limiteIngressos, descricao, "" + ingressosDisponiveis);
+            return List.of(nome,data,local,horario, descricao,"" + limiteIngressos, "" + ingressosDisponiveis);
         }
 
 
@@ -54,16 +54,45 @@ public record ObjectShow (
                 return resultado;
             }
 
-    public static Optional<ObjectShow> buscarLocal(List<ObjectShow> tudo, String localProcurado) {
-        return tudo.stream().filter(v -> v.local().equals(localProcurado)).findAny();
+    public static Optional<ObjectShow> buscarNome(List<ObjectShow> tudo, String nomeProcurado) {
+        return tudo.stream().filter(s -> s.nome().equals(nomeProcurado)).findAny();
     }
     public static Optional<ObjectShow> buscarhorario(List<ObjectShow> tudo, String horarioprocurado) {
-        return tudo.stream().filter(v -> v.horario().equals(horarioprocurado)).findAny();
+        return tudo.stream().filter(s -> s.horario().equals(horarioprocurado)).findAny();
     }
     public static Optional<ObjectShow> buscarData(List<ObjectShow> tudo, String dataProcurada) {
-        return tudo.stream().filter(v -> v.data().equals(dataProcurada)).findAny();
+        return tudo.stream().filter(s -> s.data().equals(dataProcurada)).findAny();
+    }
+    public static void buscarShow() {
+        System.out.println();
+        System.out.print("Digite o nome do Show: ");
+        var nomesShows = lerDados.lerTexto("Inválido");
+        var shows = Txt_Show.lerTudo();
+        var encontrou = ObjectShow.buscarNome(shows, nomesShows);
+        if (encontrou.isEmpty()) {
+            System.out.println("Não encontrei esse Show.");
+        } else {
+            mostrarShow(encontrou.get());
+        }
     }
 
+    private static void mostrarShow(ObjectShow s) {
+        System.out.println("Nome: " + s.nome());
+        System.out.println("Data: " + s.data());
+        System.out.println("Horario: " + s.horario());
+        System.out.println("Local: " + s.local());
+        System.out.println("Descrição: " + s.descricao());
+        System.out.println("Limite de Ingressos: " + s.limiteIngressos());
+        System.out.println("Ingressos Disponiveis: " + s.ingressosDisponiveis());
+    }
+
+    public static void listarShow() {
+        var shows = Txt_Show.lerTudo();
+        for (var s : shows) {
+            System.out.println();
+            mostrarShow(s);
+        }
+    }
         }
 
 

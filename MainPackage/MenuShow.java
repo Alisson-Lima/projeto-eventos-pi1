@@ -9,12 +9,19 @@ public class MenuShow {
             System.out.println("Escolha uma opção:");
             System.out.println("1 - Cadastrar Show");
             System.out.println("2 - Buscar Show");
+            System.out.println("3 - Listar Show");
             System.out.println("X - VOLTAR");
             System.out.println();
             System.out.print("Digite a sua escolha: ");
             var escolha = lerDados.lerTexto("Opção Inválida").toUpperCase();
             if (escolha.equals("1")) {
                 cadstrarShow();
+            } else if(escolha.equals("2")) {
+                ObjectShow.buscarShow();
+            }else if(escolha.equals("3")){
+                ObjectShow.listarShow();
+            }else if(escolha.equals("X")){
+                return;
             }
 
         }
@@ -24,25 +31,25 @@ public class MenuShow {
 
             System.out.println();
             System.out.println("__________Cadasto de Show_________\nNome do Show: ");
-            var nome = lerDados.lerTexto(null);
+            var nome = lerDados.lerTexto("Inválido Tente novamente:\n");
 
             System.out.println("Data do Show: ");
-            var data = lerDados.lerTexto(null);
+            var data = lerDados.lerTexto("Data Inválida Tente novamente:\n");
 
             System.out.println("Local do Show: ");
-            var local = lerDados.lerTexto(null);
+            var local = lerDados.lerTexto("Local Inválido Tente novamente:\n");
 
             System.out.println("Horario do Show: ");
-            var horario = lerDados.lerTexto(null);
+            var horario = lerDados.lerTexto("Horario Inválido Tente novamente:\n");
 
             System.out.println("Descrição do Show: ");
-            var descricao = lerDados.lerTexto(null);
+            var descricao = lerDados.lerTexto("Descrição Inválida Tente novamente:\n");
 
             System.out.println("Limites de ingressos do Show: ");
-            var limiteIngressos = lerDados.lerInt(null);
+            var limiteIngressos = lerDados.lerInt("Valor Inválido Tente novamente:\n");
 
             System.out.println("Os ingressos estão disponiveis? Sim[S] Não[N]");
-            var ingressos = lerDados.lerTexto(null);
+            var ingressos = lerDados.lerTexto("Opção Inválida Tente novamente:\n");
 
             if(ingressos.equals("n")){
                ingressosDisponiveis = false;

@@ -30,9 +30,9 @@ public class MenuTipos_Evento {
             var opcao = lerDados.lerTexto("\nPreencha o campo de escolha!: \n").toUpperCase();
 
             if (opcao.equals("1")) {
-
+                MenuComicio.menuComicio();
             } else if (opcao.equals("2")) {
-
+                MenuFesta.menuFesta();
             } else if (opcao.equals("3")) {
 
             } else if (opcao.equals("4")) {
