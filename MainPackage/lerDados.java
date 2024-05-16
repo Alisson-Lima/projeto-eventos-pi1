@@ -1,13 +1,31 @@
 package MainPackage;
 
+import java.time.DateTimeException;
+import java.time.LocalTime;
 import java.util.Scanner;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.chrono.IsoChronology;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 public class lerDados {
 
     private static final Scanner scan = new Scanner(System.in);
-    public static SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-    public static SimpleDateFormat formatoHorario = new SimpleDateFormat("HH:mm");
+
+    private static final DateTimeFormatter DATA = DateTimeFormatter
+            .ofPattern("dd/MM/uuuu")
+            .withChronology(IsoChronology.INSTANCE)
+            .withResolverStyle(ResolverStyle.STRICT);
+
+    private static final DateTimeFormatter HORA = DateTimeFormatter
+            .ofPattern("HH:mm")
+            .withChronology(IsoChronology.INSTANCE)
+            .withResolverStyle(ResolverStyle.STRICT);
+
+    private static final LocalDate dataAtual = LocalDate.now();
+
 
     public static int lerInt(String tenteNovamente) {
         while (true) {
@@ -45,47 +63,111 @@ public class lerDados {
             try {
 
                 if(linha.isEmpty()) {
-                    throw new NumberFormatException();
+                    throw new Exception();
                 }
 
                 return linha;
-            } catch (NumberFormatException erro) {
+            } catch (Exception erro) {
                 System.out.print(tenteNovamente);
             }
         }
     }
 
-    public static String lerData(String tenteNovamente) {
-
+    public static LocalDate lerDataUser(String tenteNovamente) {
         while (true) {
-
             var linha = scan.nextLine();
-
             try {
 
-                formatoData.parse(linha);
+                var dateInput = LocalDate.parse(linha, DATA);
 
-                return linha;
-            } catch (java.text.ParseException erro) {
-                System.out.print(tenteNovamente);
-            }
+                LocalDate compareDateNow =  LocalDate.of(
+                                            dataAtual.getYear(),
+                                            dataAtual.getMonthValue(),
+                                            dataAtual.getDayOfMonth()
+                );
+
+                LocalDate compareDateInput = LocalDate.of(
+                                             dateInput.getYear(),
+                                             dateInput.getMonthValue(),
+                                             dateInput.getDayOfMonth()
+                );
+
+                LocalDate compareDateMin = LocalDate.of(
+                                      1900,
+                                     1,
+                                 1
+                );
+
+                if (compareDateInput.isAfter(compareDateNow) || compareDateInput.isBefore(compareDateMin)){
+                    throw new DateTimeException("Data inválida");
+                }
+
+                if(dataAtual.getYear() - dateInput.getYear() < 18){
+                    throw new DateTimeException("Menor de Idade");
+                }
+
+                return dateInput;
+
+            } catch (DateTimeException erro){
+                 if (erro.getMessage().equals("Data inválida")) {
+                    System.out.println("\nAcredito que não seja possível nascer amanhã ou há 125 anos atrás. ");
+                } else if (erro.getMessage().equals("Menor de Idade")){
+                    System.out.print("\nSó possível efetuar o cadastro sendo maior de idade. \n");
+                }
+            } System.out.print(tenteNovamente);
         }
     }
 
-    public static String lerHorario(String tenteNovamente) {
-
+    public static LocalDate lerData(String tenteNovamente) {
         while (true) {
-
             var linha = scan.nextLine();
-
             try {
 
-                formatoHorario.parse(linha);
+                var dateInput = LocalDate.parse(linha, DATA);
 
-                return linha;
-            } catch (java.text.ParseException erro) {
+                LocalDate compareDateNow =  LocalDate.of(
+                        dataAtual.getYear(),
+                        dataAtual.getMonthValue(),
+                        dataAtual.getDayOfMonth()
+                );
+
+                LocalDate compareDateInput = LocalDate.of(
+                        dateInput.getYear(),
+                        dateInput.getMonthValue(),
+                        dateInput.getDayOfMonth()
+                );
+
+                LocalDate compareDateMin = LocalDate.of(
+                        1900,
+                        1,
+                        1
+                );
+
+                if (compareDateInput.isBefore(compareDateNow)){
+                    throw new DateTimeException("Data inválida");
+                }
+
+                return dateInput;
+
+            } catch (DateTimeException erro){
+                if (erro.getMessage().equals("Data inválida")) {
+                    System.out.println("\nAcredito que não seja possível criar um evento com a data de ontem.\n");
+                }
+
+            } System.out.print(tenteNovamente);
+        }
+    }
+
+    public static LocalTime lerHorario(String tenteNovamente) {
+        while (true) {
+            var linha = scan.nextLine();
+            try {
+
+                return LocalTime.parse(linha, HORA);
+            } catch (DateTimeParseException erro) {
                 System.out.print(tenteNovamente);
             }
+
         }
     }
 

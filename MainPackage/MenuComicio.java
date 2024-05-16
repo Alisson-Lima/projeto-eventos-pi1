@@ -15,7 +15,7 @@ public class MenuComicio {
             System.out.print("Digite a sua escolha: ");
             var escolha = lerDados.lerTexto("Opção Inválida").toUpperCase();
             if (escolha.equals("1")) {
-                cadstrarComicio();
+                cadastrarComicio();
             }else if (escolha.equals("2")) {
                 ObjectComicio.buscarComicio();
                 return;
@@ -29,7 +29,7 @@ public class MenuComicio {
         }
     }
 
-        private static void cadstrarComicio() {
+        private static void cadastrarComicio() {
 
             System.out.println();
             System.out.println("__________Cadasto de Comicio_________\nNome do Comicio: ");

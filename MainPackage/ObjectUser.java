@@ -1,5 +1,9 @@
 package MainPackage;
 
+import java.time.LocalDate;
+import java.time.chrono.IsoChronology;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.Optional;
 import  java.util.List;
 import java.util.ArrayList;
@@ -8,7 +12,7 @@ public record ObjectUser(
 
         String  Nome,
         String  Sobrenome,
-        String  Data_Nasc,
+        LocalDate Data_Nasc,
         String  CPF_OU_CNPJ,
         String  Telefone,
         String  Email,
@@ -19,9 +23,20 @@ public record ObjectUser(
 
     private static final int CAMPOS = ObjectUser.class.getRecordComponents().length;
 
+
+    private static final DateTimeFormatter DATA = DateTimeFormatter
+                        .ofPattern("dd/MM/uuuu")
+                        .withChronology(IsoChronology.INSTANCE)
+                        .withResolverStyle(ResolverStyle.STRICT);
+
+
+    public String data_NascString() {
+        return DATA.format(Data_Nasc);
+    }
+
     public List<String> desconstruir() {
 
-        return List.of(Nome, Sobrenome, Data_Nasc, CPF_OU_CNPJ, Telefone, Email, Senha);
+        return List.of(Nome, Sobrenome, data_NascString(), CPF_OU_CNPJ, Telefone, Email, Senha);
     }
 
 
@@ -45,7 +60,7 @@ public record ObjectUser(
 
                 listinha.get(0),
                 listinha.get(1),
-                listinha.get(2),
+                LocalDate.parse(listinha.get(2), DATA),
                 listinha.get(3),
                 listinha.get(4),
                 listinha.get(5),
@@ -90,12 +105,12 @@ public record ObjectUser(
 
     public static Optional<ObjectUser>  BuscarUser_Email(List<ObjectUser> tudo, String Email) {
         return   tudo.stream()
-                .filter(v -> v.Email().equalsIgnoreCase(Email)).findAny();
+                .filter(v -> v.Email().equals(Email)).findAny();
     }
 
     public static Optional<ObjectUser>  BuscarUser_EmaileSenha(List<ObjectUser> tudo, String Email ,String Senha) {
         return  tudo.stream()
-                .filter(v -> v.Email().equalsIgnoreCase(Email) && v.Senha().equalsIgnoreCase(Senha)).findAny();
+                .filter(v -> v.Email().equalsIgnoreCase(Email) && v.Senha().equals(Senha)).findAny();
     }
 
 }

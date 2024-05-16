@@ -1,7 +1,0 @@
-Festona
-15/12/20
-Paris
-18:20
-Frace
-12
-true

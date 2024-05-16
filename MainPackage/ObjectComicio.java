@@ -1,5 +1,11 @@
 package MainPackage;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.chrono.IsoChronology;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -8,8 +14,8 @@ import java.util.Optional;
 public record ObjectComicio
             (
         String Nome,
-        String Data,
-        String Horario,
+        LocalDate Data,
+        LocalTime Horario,
         String Local,
         String Partido,
         String Descricao,
@@ -17,11 +23,29 @@ public record ObjectComicio
 
 
 
-            private static final int CAMPOS = ObjectComicio.class.getRecordComponents().length;
+    private static final int CAMPOS = ObjectComicio.class.getRecordComponents().length;
 
+    private static final DateTimeFormatter DATA = DateTimeFormatter
+            .ofPattern("dd/MM/uuuu")
+            .withChronology(IsoChronology.INSTANCE)
+            .withResolverStyle(ResolverStyle.STRICT);
+
+    private static final DateTimeFormatter HORA = DateTimeFormatter
+            .ofPattern("HH:mm")
+            .withChronology(IsoChronology.INSTANCE)
+            .withResolverStyle(ResolverStyle.STRICT);
+
+
+    public String dataString() {
+        return DATA.format(Data);
+    }
+
+    public String horarioString() {
+        return HORA.format(Horario);
+    }
 
     public List<String> desconstruir() {
-        return List.of(Nome,Data,Horario,Local,Partido,Descricao, "" + Autorizacao);
+        return List.of(Nome,dataString(),horarioString(),Local,Partido,Descricao, "" + Autorizacao);
     }
 
 
@@ -38,8 +62,8 @@ public record ObjectComicio
         return new ObjectComicio(
 
                 listinha.get(0),
-                listinha.get(1),
-                listinha.get(2),
+                LocalDate.parse(listinha.get(3), DATA),
+                LocalTime.parse(listinha.get(2), HORA),
                 listinha.get(3),
                 listinha.get(4),
                 listinha.get(5),
@@ -81,13 +105,13 @@ public record ObjectComicio
     }
 
     private static void mostrarComicio(ObjectComicio c) {
-        System.out.println("Nome: " + c.Nome()       );
-        System.out.println("Data: " + c.Data()    );
-        System.out.println("Horario: " + c.Horario()    );
-        System.out.println("Local: " + c.Local()    );
-        System.out.println("Partido: " + c.Partido()    );
-        System.out.println("Descrição: " + c.Descricao()    );
-        System.out.println("Autorização: " + c.Autorizacao()    );
+        System.out.println("Nome: " + c.Nome());
+        System.out.println("Data: " + c.dataString());
+        System.out.println("Horario: " + c.Horario());
+        System.out.println("Local: " + c.Local());
+        System.out.println("Partido: " + c.Partido());
+        System.out.println("Descrição: " + c.Descricao());
+        System.out.println("Autorização: " + c.Autorizacao());
     }
 
     public static void listarComicios() {

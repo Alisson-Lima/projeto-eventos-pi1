@@ -1,5 +1,6 @@
 package MainPackage;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Cadastro_E_Login {
@@ -13,7 +14,7 @@ public class Cadastro_E_Login {
         String Sobrenome = lerDados.lerTexto("\nPreencha o Campo de Sobrenome!\n");
 
         System.out.println("\nDigite sua Data de Nascimento:");
-        String Data_Nasc = lerDados.lerData("\nPreencha o Campo de Data de Nascimento!\n");
+        LocalDate Data_Nasc = lerDados.lerDataUser("\nPreencha o Campo de Data de Nascimento! \n");
 
         String CPF_OU_CNPJ = VerificarCPF_OU_CNPJExiste();
 
@@ -50,7 +51,7 @@ public class Cadastro_E_Login {
 
         }
 
-        return CPF_OU_CNPJ;
+        return RegexFunctions.formatarCPF(CPF_OU_CNPJ);
     }
 
 
@@ -60,7 +61,7 @@ public class Cadastro_E_Login {
 
         String Telefone;
 
-        System.out.println("\nDigite seu número de telefone: ");
+        System.out.println("\nDigite seu número de telefone sem espaços, parênteses ou traços: ");
         Telefone = lerDados.lerTexto("\nPreencha o Campo de Telefone!\n");
 
         while (ObjectUser.BuscarUser_Telefone(users ,Telefone).isPresent()) {
@@ -70,7 +71,7 @@ public class Cadastro_E_Login {
 
         }
 
-        return Telefone;
+        return RegexFunctions.formatarTelefone(Telefone);
     }
 
 
