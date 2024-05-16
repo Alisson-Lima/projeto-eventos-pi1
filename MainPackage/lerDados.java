@@ -1,5 +1,6 @@
 package MainPackage;
 
+import java.time.DateTimeException;
 import java.time.LocalTime;
 import java.util.Scanner;
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.time.format.ResolverStyle;
 public class lerDados {
 
     private static final Scanner scan = new Scanner(System.in);
+
     private static final DateTimeFormatter DATA = DateTimeFormatter
             .ofPattern("dd/MM/uuuu")
             .withChronology(IsoChronology.INSTANCE)
@@ -21,6 +23,9 @@ public class lerDados {
             .ofPattern("HH:mm")
             .withChronology(IsoChronology.INSTANCE)
             .withResolverStyle(ResolverStyle.STRICT);
+
+    private static final LocalDate dataAtual = LocalDate.now();
+
 
     public static int lerInt(String tenteNovamente) {
         while (true) {
@@ -68,19 +73,88 @@ public class lerDados {
         }
     }
 
+    public static LocalDate lerDataUser(String tenteNovamente) {
+        while (true) {
+            var linha = scan.nextLine();
+            try {
+
+                var dateInput = LocalDate.parse(linha, DATA);
+
+                LocalDate compareDateNow =  LocalDate.of(
+                                            dataAtual.getYear(),
+                                            dataAtual.getMonthValue(),
+                                            dataAtual.getDayOfMonth()
+                );
+
+                LocalDate compareDateInput = LocalDate.of(
+                                             dateInput.getYear(),
+                                             dateInput.getMonthValue(),
+                                             dateInput.getDayOfMonth()
+                );
+
+                LocalDate compareDateMin = LocalDate.of(
+                                      1900,
+                                     1,
+                                 1
+                );
+
+                if (compareDateInput.isAfter(compareDateNow) || compareDateInput.isBefore(compareDateMin)){
+                    throw new DateTimeException("Data inválida");
+                }
+
+                if(dataAtual.getYear() - dateInput.getYear() < 18){
+                    throw new DateTimeException("Menor de Idade");
+                }
+
+                return dateInput;
+
+            } catch (DateTimeException erro){
+                 if (erro.getMessage().equals("Data inválida")) {
+                    System.out.println("\nAcredito que não seja possível nascer amanhã ou há 125 anos atrás. ");
+                } else if (erro.getMessage().equals("Menor de Idade")){
+                    System.out.print("\nSó possível efetuar o cadastro sendo maior de idade. \n");
+                }
+            } System.out.print(tenteNovamente);
+        }
+    }
+
     public static LocalDate lerData(String tenteNovamente) {
         while (true) {
             var linha = scan.nextLine();
             try {
 
-                if(linha.isEmpty()) {
-                    throw new Exception();
+                var dateInput = LocalDate.parse(linha, DATA);
+
+                LocalDate compareDateNow =  LocalDate.of(
+                        dataAtual.getYear(),
+                        dataAtual.getMonthValue(),
+                        dataAtual.getDayOfMonth()
+                );
+
+                LocalDate compareDateInput = LocalDate.of(
+                        dateInput.getYear(),
+                        dateInput.getMonthValue(),
+                        dateInput.getDayOfMonth()
+                );
+
+                LocalDate compareDateMin = LocalDate.of(
+                        1900,
+                        1,
+                        1
+                );
+
+                if (compareDateInput.isBefore(compareDateNow)){
+                    throw new DateTimeException("Data inválida");
                 }
 
-                return LocalDate.parse(linha, DATA);
-            } catch (Exception erro) {
-                System.out.print(tenteNovamente);
-            }
+                return dateInput;
+
+            } catch (DateTimeException erro){
+                if (erro.getMessage().equals("Data inválida")) {
+                    System.out.println("\nAcredito que não seja possível criar um evento com a data de ontem.\n");
+                }
+
+            } System.out.print(tenteNovamente);
         }
     }
 
@@ -88,11 +162,12 @@ public class lerDados {
         while (true) {
             var linha = scan.nextLine();
             try {
+
                 return LocalTime.parse(linha, HORA);
             } catch (DateTimeParseException erro) {
-                // Ignora o erro, segue com o System.out.println mais abaixo e com o while true em seguida.
+                System.out.print(tenteNovamente);
             }
-            System.out.print(tenteNovamente);
+
         }
     }
 

@@ -14,7 +14,7 @@ public class Cadastro_E_Login {
         String Sobrenome = lerDados.lerTexto("\nPreencha o Campo de Sobrenome!\n");
 
         System.out.println("\nDigite sua Data de Nascimento:");
-        LocalDate Data_Nasc = lerDados.lerData("\nPreencha o Campo de Data de Nascimento!\n");
+        LocalDate Data_Nasc = lerDados.lerDataUser("\nPreencha o Campo de Data de Nascimento! \n");
 
         String CPF_OU_CNPJ = VerificarCPF_OU_CNPJExiste();
 
