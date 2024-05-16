@@ -1,5 +1,11 @@
 package MainPackage;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.chrono.IsoChronology;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -7,18 +13,36 @@ import java.util.Optional;
 public record ObjectShow (
 
          String nome,
-         String data,
+         LocalDate data,
+         LocalTime horario,
          String local,
-         String horario,
          String descricao,
          int limiteIngressos,
          Boolean ingressosDisponiveis){
 
         private static final int CAMPOS = ObjectShow.class.getRecordComponents().length;
 
+        private static final DateTimeFormatter DATA = DateTimeFormatter
+                .ofPattern("dd/MM/uuuu")
+                .withChronology(IsoChronology.INSTANCE)
+                .withResolverStyle(ResolverStyle.STRICT);
+
+        private static final DateTimeFormatter HORA = DateTimeFormatter
+                .ofPattern("HH:mm")
+                .withChronology(IsoChronology.INSTANCE)
+                .withResolverStyle(ResolverStyle.STRICT);
+
+
+        public String dataString() {
+            return DATA.format(data);
+        }
+
+        public String horarioString() {
+            return HORA.format(horario);
+        }
 
         public List<String> desconstruir() {
-            return List.of(nome,data,local,horario, descricao,"" + limiteIngressos, "" + ingressosDisponiveis);
+            return List.of(nome, dataString(), horarioString(), local, descricao,"" + limiteIngressos, "" + ingressosDisponiveis);
         }
 
 
@@ -35,8 +59,8 @@ public record ObjectShow (
             return new ObjectShow(
 
                     listinha.get(0),
-                    listinha.get(1),
-                    listinha.get(2),
+                    LocalDate.parse(listinha.get(1), DATA),
+                    LocalTime.parse(listinha.get(2), HORA),
                     listinha.get(3),
                     listinha.get(4),
                     Integer.parseInt(listinha.get(5)),
@@ -78,7 +102,7 @@ public record ObjectShow (
 
     private static void mostrarShow(ObjectShow s) {
         System.out.println("Nome: " + s.nome());
-        System.out.println("Data: " + s.data());
+        System.out.println("Data: " + s.dataString());
         System.out.println("Horario: " + s.horario());
         System.out.println("Local: " + s.local());
         System.out.println("Descrição: " + s.descricao());

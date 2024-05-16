@@ -15,7 +15,7 @@ public class MenuShow {
             System.out.print("Digite a sua escolha: ");
             var escolha = lerDados.lerTexto("Opção Inválida").toUpperCase();
             if (escolha.equals("1")) {
-                cadstrarShow();
+                cadastrarShow();
             } else if(escolha.equals("2")) {
                 ObjectShow.buscarShow();
             }else if(escolha.equals("3")){
@@ -26,7 +26,7 @@ public class MenuShow {
 
         }
     }
-        private static void cadstrarShow() {
+        private static void cadastrarShow() {
             Boolean ingressosDisponiveis = true;
 
             System.out.println();
@@ -34,13 +34,13 @@ public class MenuShow {
             var nome = lerDados.lerTexto("Inválido Tente novamente:\n");
 
             System.out.println("Data do Show: ");
-            var data = lerDados.lerTexto("Data Inválida Tente novamente:\n");
+            var data = lerDados.lerData("Data Inválida Tente novamente:\n");
+
+            System.out.println("Horario do Show: ");
+            var horario = lerDados.lerHorario("Horario Inválido Tente novamente:\n");
 
             System.out.println("Local do Show: ");
             var local = lerDados.lerTexto("Local Inválido Tente novamente:\n");
-
-            System.out.println("Horario do Show: ");
-            var horario = lerDados.lerTexto("Horario Inválido Tente novamente:\n");
 
             System.out.println("Descrição do Show: ");
             var descricao = lerDados.lerTexto("Descrição Inválida Tente novamente:\n");
@@ -55,7 +55,7 @@ public class MenuShow {
                ingressosDisponiveis = false;
             }
 
-            var showcad = new ObjectShow(nome, data, local, horario, descricao, limiteIngressos, ingressosDisponiveis);
+            var showcad = new ObjectShow(nome, data, horario, local, descricao, limiteIngressos, ingressosDisponiveis);
             Txt_Show.salvar(showcad);
             System.out.println("Show cadastrado");
         }

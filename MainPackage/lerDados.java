@@ -1,13 +1,26 @@
 package MainPackage;
 
+import java.time.LocalTime;
 import java.util.Scanner;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.chrono.IsoChronology;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 public class lerDados {
 
     private static final Scanner scan = new Scanner(System.in);
-    public static SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-    public static SimpleDateFormat formatoHorario = new SimpleDateFormat("HH:mm");
+    private static final DateTimeFormatter DATA = DateTimeFormatter
+            .ofPattern("dd/MM/uuuu")
+            .withChronology(IsoChronology.INSTANCE)
+            .withResolverStyle(ResolverStyle.STRICT);
+
+    private static final DateTimeFormatter HORA = DateTimeFormatter
+            .ofPattern("HH:mm")
+            .withChronology(IsoChronology.INSTANCE)
+            .withResolverStyle(ResolverStyle.STRICT);
 
     public static int lerInt(String tenteNovamente) {
         while (true) {
@@ -45,47 +58,41 @@ public class lerDados {
             try {
 
                 if(linha.isEmpty()) {
-                    throw new NumberFormatException();
+                    throw new Exception();
                 }
 
                 return linha;
-            } catch (NumberFormatException erro) {
+            } catch (Exception erro) {
                 System.out.print(tenteNovamente);
             }
         }
     }
 
-    public static String lerData(String tenteNovamente) {
-
+    public static LocalDate lerData(String tenteNovamente) {
         while (true) {
-
             var linha = scan.nextLine();
-
             try {
 
-                formatoData.parse(linha);
+                if(linha.isEmpty()) {
+                    throw new Exception();
+                }
 
-                return linha;
-            } catch (java.text.ParseException erro) {
+                return LocalDate.parse(linha, DATA);
+            } catch (Exception erro) {
                 System.out.print(tenteNovamente);
             }
         }
     }
 
-    public static String lerHorario(String tenteNovamente) {
-
+    public static LocalTime lerHorario(String tenteNovamente) {
         while (true) {
-
             var linha = scan.nextLine();
-
             try {
-
-                formatoHorario.parse(linha);
-
-                return linha;
-            } catch (java.text.ParseException erro) {
-                System.out.print(tenteNovamente);
+                return LocalTime.parse(linha, HORA);
+            } catch (DateTimeParseException erro) {
+                // Ignora o erro, segue com o System.out.println mais abaixo e com o while true em seguida.
             }
+            System.out.print(tenteNovamente);
         }
     }
 

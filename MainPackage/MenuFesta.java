@@ -16,7 +16,7 @@ public class MenuFesta {
 
                 var escolha = lerDados.lerTexto("Opção Inválida").toUpperCase();
                 if (escolha.equals("1")) {
-                    cadstrarFesta();
+                    cadastrarFesta();
                 }else if (escolha.equals("2")) {
                     ObjectFesta.buscarFesta();
                     return;
@@ -30,7 +30,7 @@ public class MenuFesta {
             }
         }
 
-        private static void cadstrarFesta() {
+        private static void cadastrarFesta() {
             Boolean Disponivel = false;
 
             System.out.println();
