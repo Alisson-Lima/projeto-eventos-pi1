@@ -1,5 +1,11 @@
 package MainPackage;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static MainPackage.ListaParticipantes.converterArrayParticipantesEmString;
+import static MainPackage.ListaParticipantes.converterStringEmParticipantes;
+
 public class MenuFesta {
         public static void menuFesta(){
 
@@ -49,8 +55,25 @@ public class MenuFesta {
             System.out.println("Descrição da Festa: ");
             var Descricao = lerDados.lerTexto("Opção Inválida\n");
 
-            System.out.println("Limites de ingressos da Festa: ");
-            var Limite_Participantes = lerDados.lerInt("Valor Inválido Tente novamente:\n");
+            var Participantes = new ArrayList<String>();
+            Boolean continuar = true;
+
+            while(continuar){
+
+                System.out.println("Digite o nome do participante: ");
+                var nome = lerDados.lerTexto("Valor Inválido Tente novamente:\n");
+                Participantes.add(nome);
+
+                System.out.println("Adicionar mais um participante? [Sim/Não] ");
+                Boolean res = lerDados.lerSimNao("Preencha o campo de nome de participantes");
+
+                if(!res){
+                    continuar = false;
+                }
+
+            }
+
+            String LinhaParticipantes = converterArrayParticipantesEmString(Participantes);
 
             System.out.println("Os ingressos estão disponiveis? Sim[S] Não[N]");
             var ingressosDisponiveis = lerDados.lerTexto("Opção Inválida Tente novamente:\n");
@@ -59,7 +82,9 @@ public class MenuFesta {
                 Disponivel = false;
             }
 
-            var cadFesta = new ObjectFesta(Nome, Data, Horario ,Local, Descricao, Limite_Participantes, Disponivel);
+            var cadFesta = new ObjectFesta(Nome, Data, Horario ,Local, Descricao, LinhaParticipantes, Disponivel);
+            System.out.println(cadFesta);
+
             Txt_Festa.salvar(cadFesta);
             System.out.println("Festa cadastrada");
         }

@@ -17,7 +17,7 @@ public record ObjectFesta(
         LocalTime Horario,
         String Local,
         String Descricao,
-        int Limite_Participantes,
+        String participantes,
         boolean Disponivel
 
 ){
@@ -46,7 +46,7 @@ public record ObjectFesta(
 
     public List<String> desconstruir() {
 
-        return List.of(Nome, dataString(), horarioString(), Local, Descricao, "" + Limite_Participantes, "" + Disponivel);
+        return List.of(Nome, dataString(), horarioString(), Local, Descricao, "" + participantes, "" + Disponivel);
     }
 
 
@@ -65,7 +65,6 @@ public record ObjectFesta(
     public static ObjectFesta construir(List<String> listinha) {
 
         if (listinha.size() != CAMPOS) throw new IllegalArgumentException();
-
         return new ObjectFesta(
 
                 listinha.get(0),
@@ -73,7 +72,7 @@ public record ObjectFesta(
                 LocalTime.parse(listinha.get(2), HORA),
                 listinha.get(3),
                 listinha.get(4),
-                Integer.parseInt(listinha.get(5)),
+                listinha.get(5),
                 Boolean.parseBoolean(listinha.get(6))
 
         );
@@ -124,7 +123,11 @@ public record ObjectFesta(
         System.out.println("Horario: " + f.Horario());
         System.out.println("Local: " + f.Local());
         System.out.println("Descrição: " + f.Descricao());
-        System.out.println("Limite de Ingressos: " + f.Limite_Participantes());
+        System.out.println("Participantes:");
+        var arrPart = ListaParticipantes.converterStringEmParticipantes(f.participantes);
+        for(var nome: arrPart){
+            System.out.println("    • " + nome);
+        }
         System.out.println("Ingressos Disponiveis: " + f.Disponivel());
     }
 
