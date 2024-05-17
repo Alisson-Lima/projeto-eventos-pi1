@@ -51,7 +51,8 @@ public class Cadastro_E_Login {
 
         }
 
-        return RegexFunctions.formatarCPF(CPF_OU_CNPJ);
+        throw new RuntimeException("Não fiz essa parte ainda!");
+        //return RegexFunctions.formatarCPF(CPF_OU_CNPJ);
     }
 
 
@@ -71,7 +72,8 @@ public class Cadastro_E_Login {
 
         }
 
-        return RegexFunctions.formatarTelefone(Telefone);
+        throw new RuntimeException("Não fiz essa parte ainda!");
+        //return RegexFunctions.formatarTelefone(Telefone);
     }
 
 
