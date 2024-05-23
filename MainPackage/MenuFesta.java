@@ -83,7 +83,6 @@ public class MenuFesta {
             }
 
             var cadFesta = new ObjectFesta(Nome, Data, Horario ,Local, Descricao, LinhaParticipantes, Disponivel);
-            System.out.println(cadFesta);
 
             Txt_Festa.salvar(cadFesta);
             System.out.println("Festa cadastrada");
