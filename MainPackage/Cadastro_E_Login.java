@@ -39,19 +39,22 @@ public class Cadastro_E_Login {
 
         String CPF_OU_CNPJ;
 
-
-
         System.out.println("\nDigite seu CPF ou CNPJ: ");
         CPF_OU_CNPJ = lerDados.lerTexto("\nPreencha o Campo de CPF OU CNPJ!\n");
+
+        CPF_OU_CNPJ = RegexFunctions.formatarCPF(CPF_OU_CNPJ);
+
+        String CPF_OU_CNPJInput;
 
         while (ObjectUser.BuscarUser_CPFOUCNPJ(users ,CPF_OU_CNPJ).isPresent()) {
 
             System.out.println("\nO CPF OU CNPJ digitado já existe! Digite outro CPF ou CNPJ: ");
-            CPF_OU_CNPJ = lerDados.lerTexto("\nPreencha o Campo de CPF OU CNPJ!\n");
+            CPF_OU_CNPJInput = lerDados.lerTexto("\nPreencha o Campo de CPF OU CNPJ!\n");
 
+            CPF_OU_CNPJ = RegexFunctions.formatarCPF(CPF_OU_CNPJInput);
         }
 
-        return RegexFunctions.formatarCPF(CPF_OU_CNPJ);
+        return CPF_OU_CNPJ;
 
     }
 
@@ -65,14 +68,21 @@ public class Cadastro_E_Login {
         System.out.println("\nDigite seu número de telefone sem espaços, parênteses ou traços: ");
         Telefone = lerDados.lerTexto("\nPreencha o Campo de Telefone!\n");
 
+        Telefone = RegexFunctions.formatarTelefone(Telefone);
+
+        String telefoneInput;
+
         while (ObjectUser.BuscarUser_Telefone(users ,Telefone).isPresent()) {
 
             System.out.println("\nO telefone digitado já existe! Digite outro telefone: ");
-            Telefone = lerDados.lerTexto("\nPreencha o Campo de Telefone!\n");
+            telefoneInput = lerDados.lerTexto("\nPreencha o Campo de Telefone!\n");
+
+            Telefone = RegexFunctions.formatarTelefone(telefoneInput);
 
         }
 
-        return RegexFunctions.formatarTelefone(Telefone);
+
+        return Telefone;
     }
 
 
@@ -85,9 +95,9 @@ public class Cadastro_E_Login {
         System.out.println("\nDigite seu E-mail: ");
         Email = lerDados.lerTexto("\nPreencha o Campo de E-mail!\n");
 
-        while (ObjectUser.BuscarUser_Email(users ,Email).isPresent()) {
+        while (ObjectUser.BuscarUser_Email(users ,Email).isPresent() || !RegexFunctions.validarEmail(Email)) {
 
-            System.out.println("\nO E-mail digitado já existe! Digite outro E-mail: ");
+            System.out.println("\nO E-mail digitado já existe ou não está no formato correto (username@domain.com)! Digite outro E-mail: ");
             Email = lerDados.lerTexto("\nPreencha o Campo de E-mail!\n");
 
         }
