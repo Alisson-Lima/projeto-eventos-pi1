@@ -44,6 +44,9 @@ public class MenuPrincipal {
                 System.out.println("_________Shows_________");
                 ObjectShow.listarShow();
                 System.out.println("_________________________\n");
+                System.out.println("_________Reuniões_________");
+                ObjectReuniao.listarReuniao();
+
             } else if (opcao.equals("3")) {
 
             } else if (opcao.equals("4")) {
