@@ -136,12 +136,41 @@ public class Cadastro_E_Login {
 
         var teste = List.of(infosLogin.get().Nome(), infosLogin.get().Sobrenome(), infosLogin.get().Email());
 
-
         TxtLogado.salvarTudo(teste);
 
         System.out.println("\n---------- Usuário logado! ---------");
 
         MenuPrincipal.PrincipalMenu();
+
+    }
+
+    public static String Retornar_EmailLogado(){
+
+        var UserLogado_Infos = TxtLogado.lerTudo();
+
+        String EmailLogado = UserLogado_Infos.getLast();
+
+        return EmailLogado;
+
+    }
+
+    public static String Retornar_NomeLogado(){
+
+        var UserLogado_Infos = TxtLogado.lerTudo();
+
+        String NomeLogado = UserLogado_Infos.getFirst();
+
+        return NomeLogado;
+
+    }
+
+    public static String Retornar_SobrenomeLogado(){
+
+        var UserLogado_Infos = TxtLogado.lerTudo();
+
+        String SobrenomeLogado = UserLogado_Infos.get(1);
+
+        return SobrenomeLogado;
 
     }
 
