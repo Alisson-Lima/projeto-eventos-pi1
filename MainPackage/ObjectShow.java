@@ -117,44 +117,70 @@ public record ObjectShow (
             mostrarShow(s);
         }
     }
+    public static void cadVenda(){
+        Boolean respostinha = false;
+
+        System.out.println("De qual evento você deseja cadastrar a venda: ");
+        var nomeEvento = lerDados.lerTexto("Inválido tente novamente:");
+        var shows = Txt_Show.lerTudo();
+        var nomeShow = ObjectShow.buscarNome(shows,nomeEvento);
+
+        if(nomeShow.isEmpty()){
+            System.out.println("Show não encontrado");
+            return;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-       /public static RegisterShow Showcad(List<String> cadastroShow){
-            if(cadastroShow.size() !=7){
-                throw new IllegalArgumentException("A lista tem que ter 7 elementos ");
-            }
-    } 
-
-        public static List<String> CadShow(){
-
-
-            if(ingressosDisponiveis.equals("s") == true){
-               ingressosDisponiveis = "true";
+            ObjectShow show = nomeShow.get();
+        if(!show.ingressosDisponiveis()){
+            System.out.println("Não há ingressos disponíveis");
+            System.out.println("Deseja que os ingressos fiquem disponíveis: [S]Sim [N]Não");
+            var resposta = lerDados.lerSimNao("Opção inválida tente novamente: [S]Sim [N]Não");
+            if(resposta){
+              respostinha = true;
             }else{
-                ingressosDisponiveis = "false";
-            }
-
-            boolean ingressosDisponiveisBool = ingressosDisponiveis.equalsIgnoreCase("s");
-
-            var show = new RegisterShow(nome, data, local, horario, limiteIngressos, descricao, ingressosDisponiveisBool);
-            return Arrays.asList(nome, data, local, horario, String.valueOf(limiteIngressos), descricao, ingressosDisponiveis);
+            return;}
         }
+        if(show.ingressosDisponiveis() || respostinha){
+            System.out.println("Digite as vendas feitas: ");
+            int venda = lerDados.lerInt("Valor Inválido tente novamente");
+            int b = show.limiteIngressos;
+            if(venda > b ){
+                System.out.println("Venda maior que o limite de ingressos");
+                return;
+            }else if(venda <= 0){
+                System.out.println("Número inválido");
+            }else {
+                int ingressosRestantes = show.limiteIngressos - venda;
+                System.out.println("Ingressos restantes: " + ingressosRestantes);
+                if (ingressosRestantes == 0) {
+                    respostinha = false;
+                    ObjectShow novoshow = new ObjectShow(
+                            show.nome(),
+                            show.data(),
+                            show.horario(),
+                            show.local(),
+                            show.descricao(),
+                            ingressosRestantes,
+                            respostinha);
+                    int index = shows.indexOf(show);
+                    shows.set(index, novoshow);
 
-        public static void Printshow(){
-            List<String> listaShow = CadShow(); // Obtém a lista de dados do show  
-            RegisterShow show = RegisterShow.Showcad(listaShow);
-            System.out.println(show);
-        }*/
+                    Txt_Show.salvarTudo(shows);
 
+                    }else {
+                    ObjectShow novoshow = new ObjectShow(
+                            show.nome(),
+                            show.data(),
+                            show.horario(),
+                            show.local(),
+                            show.descricao(),
+                            ingressosRestantes,
+                            respostinha);
+                    int index = shows.indexOf(show);
+                    shows.set(index, novoshow);
+
+                    Txt_Show.salvarTudo(shows);
+                }
+            }
+        }
+    }
+}
