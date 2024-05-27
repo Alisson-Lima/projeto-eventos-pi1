@@ -37,7 +37,7 @@ public class MenuFesta {
         }
 
         private static void cadastrarFesta() {
-            Boolean Disponivel = false;
+            Boolean Disponivel = true;
 
             System.out.println();
             System.out.println("__________Cadasto da Festa_________\nNome da Festa: ");

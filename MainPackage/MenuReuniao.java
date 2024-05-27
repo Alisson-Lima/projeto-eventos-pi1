@@ -37,7 +37,7 @@ public class MenuReuniao {
     }
 
     private static void cadastrarReuniao() {
-        Boolean Disponivel = false;
+        Boolean Disponivel = true;
 
         System.out.println();
         System.out.println("__________Cadasto da Reunião_________\nNome da Reunião: ");
