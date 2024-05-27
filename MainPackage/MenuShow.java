@@ -10,6 +10,7 @@ public class MenuShow {
             System.out.println("1 - Cadastrar Show");
             System.out.println("2 - Buscar Show");
             System.out.println("3 - Listar Show");
+            System.out.println("4 - Cadastrar Venda");
             System.out.println("X - VOLTAR");
             System.out.println();
             System.out.print("Digite a sua escolha: ");
@@ -20,6 +21,8 @@ public class MenuShow {
                 ObjectShow.buscarShow();
             }else if(escolha.equals("3")){
                 ObjectShow.listarShow();
+            }else if(escolha.equals("4")){
+                ObjectShow.cadVenda();
             }else if(escolha.equals("X")){
                 return;
             }
