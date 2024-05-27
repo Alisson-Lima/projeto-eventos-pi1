@@ -174,6 +174,14 @@ public record ObjectComicio
         System.out.println("Autorização: " + c.Autorizacao());
     }
 
+    public static void listarComicio() {
+        var comicio = Txt_Comicio.lerTudo();
+        for (var c : comicio) {
+            System.out.println();
+            mostrarComicio(c);
+        }
+    }
+
 }
 
 
