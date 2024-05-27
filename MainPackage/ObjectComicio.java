@@ -166,8 +166,8 @@ public record ObjectComicio
         System.out.println("Nome: " + c.Nome());
         System.out.println("Data: " + c.DataInicio());
         System.out.println("Data: " + c.DataFim());
-        System.out.println("Horario: " + c.HorarioInicio());
-        System.out.println("Horario: " + c.HorarioFim());
+        System.out.println("Horario Inicial: " + c.HorarioInicio());
+        System.out.println("Horario de Termino: " + c.HorarioFim());
         System.out.println("Local: " + c.Local());
         System.out.println("Partido: " + c.Partido());
         System.out.println("Descrição: " + c.Descricao());

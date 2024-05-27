@@ -23,6 +23,7 @@ public class MenuComicio {
                 ObjectComicio.buscarComicio();
                 return;
             }else if (escolha.equals("3")) {
+                ObjectComicio.listarComicio();
                 return;
             } else if (escolha.equals("X")) {
                 return;
