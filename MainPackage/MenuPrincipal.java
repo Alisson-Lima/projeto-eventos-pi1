@@ -40,28 +40,28 @@ public class MenuPrincipal {
                 boolean showExiste = false;
                 boolean reuniaoExiste = false;
 
-                if(File.arquivoExiste("Txt_Comicio")) {
+                if(File.arquivoExiste("Comicio.txt")) {
                     System.out.println("_________Comicios_________");
                     ObjectComicio.listarComicio();
                     System.out.println("_________________________\n");
 
                     comicioExiste = true;
                 }
-                if(File.arquivoExiste("Txt_Festa")) {
+                if(File.arquivoExiste("Festa.txt")) {
                     System.out.println("_________Festas_________");
                     ObjectFesta.listarFesta();
                     System.out.println("_________________________\n");
 
                     festaExiste = true;
                 }
-                if(File.arquivoExiste("Txt_Show")) {
+                if(File.arquivoExiste("Show.txt")) {
                     System.out.println("_________Shows_________");
                     ObjectShow.listarShow();
                     System.out.println("_________________________\n");
 
                     showExiste = true;
                 }
-                if(File.arquivoExiste("Txt_Reunião")) {
+                if(File.arquivoExiste("Reuniao.txt")) {
                     System.out.println("_________Reuniões_________");
                     ObjectReuniao.listarReuniao();
                     System.out.println("_________________________\n");
