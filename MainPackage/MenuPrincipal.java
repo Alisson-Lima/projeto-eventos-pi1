@@ -35,17 +35,43 @@ public class MenuPrincipal {
 
             } else if (opcao.equals("2")) {
 
-                System.out.println("_________Comicios_________");
-                ObjectComicio.listarComicios();
-                System.out.println("_________________________\n");
-                System.out.println("_________Festas_________");
-                ObjectFesta.listarFesta();
-                System.out.println("_________________________\n");
-                System.out.println("_________Shows_________");
-                ObjectShow.listarShow();
-                System.out.println("_________________________\n");
-                System.out.println("_________Reuniões_________");
-                ObjectReuniao.listarReuniao();
+                boolean comicioExiste = false;
+                boolean festaExiste = false;
+                boolean showExiste = false;
+                boolean reuniaoExiste = false;
+
+                if(File.arquivoExiste("Txt_Comicio")) {
+                    System.out.println("_________Comicios_________");
+                    ObjectComicio.listarComicio();
+                    System.out.println("_________________________\n");
+
+                    comicioExiste = true;
+                }
+                if(File.arquivoExiste("Txt_Festa")) {
+                    System.out.println("_________Festas_________");
+                    ObjectFesta.listarFesta();
+                    System.out.println("_________________________\n");
+
+                    festaExiste = true;
+                }
+                if(File.arquivoExiste("Txt_Show")) {
+                    System.out.println("_________Shows_________");
+                    ObjectShow.listarShow();
+                    System.out.println("_________________________\n");
+
+                    showExiste = true;
+                }
+                if(File.arquivoExiste("Txt_Reunião")) {
+                    System.out.println("_________Reuniões_________");
+                    ObjectReuniao.listarReuniao();
+                    System.out.println("_________________________\n");
+
+                    reuniaoExiste = true;
+                }
+
+                if(comicioExiste == false && festaExiste == false && showExiste == false && reuniaoExiste == false){
+                    System.out.println("\nNenhum evento foi cadastrado ainda!");
+                }
 
             } else if (opcao.equals("3")) {
 
