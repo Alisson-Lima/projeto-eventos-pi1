@@ -66,6 +66,7 @@ public record ObjectReuniao(
 
         if (listinha.size() != CAMPOS) throw new IllegalArgumentException();
         return new ObjectReuniao(
+
                 listinha.get(0),
                 listinha.get(1),
                 listinha.get(2),
@@ -93,6 +94,7 @@ public record ObjectReuniao(
 
         return resultado;
     }
+
     public static Optional<ObjectReuniao> buscarNome(List<ObjectReuniao> tudo, String nomeProcurado) {
         return tudo.stream().filter(r -> r.Nome().equals(nomeProcurado)).findAny();
     }
@@ -100,9 +102,11 @@ public record ObjectReuniao(
     public static Optional<ObjectReuniao> buscarId(List<ObjectReuniao> tudo, String idProcurado) {
         return tudo.stream().filter(r -> r.Id().equals(idProcurado)).findAny();
     }
+
     public static Optional<ObjectReuniao> buscarhorario(List<ObjectReuniao> tudo, String horarioprocurado) {
         return tudo.stream().filter(r -> r.Horario().equals(horarioprocurado)).findAny();
     }
+
     public static Optional<ObjectReuniao> buscarData(List<ObjectReuniao> tudo, String dataProcurada) {
         return tudo.stream().filter(r -> r.Data().equals(dataProcurada)).findAny();
     }
@@ -120,12 +124,14 @@ public record ObjectReuniao(
             mostrarReuniao(encontrou.get());
         }
     }
+
     public static boolean verifyId(String idReuniao) {
 
         var reuniao = Txt_Reuniao.lerTudo();
         var encontrou = ObjectReuniao.buscarId(reuniao, idReuniao);
         return encontrou.isPresent();
     }
+/*
     private static void mostrarReuniao(ObjectReuniao r) {
         System.out.println("ID " + r.Id());
         System.out.println("Nome: " + r.Nome());
@@ -135,13 +141,13 @@ public record ObjectReuniao(
         System.out.println("Descrição: " + r.Descricao());
         System.out.println("Participantes:");
         var arrPart = ListaParticipantes.converterStringEmParticipantes(r.participantes);
-        for(var nome: arrPart){
+        for (var nome : arrPart) {
             System.out.println("    • " + nome);
         }
-    }
-    private static void mostrarReuniaos(ObjectReuniao r) {
+    }*/
+
+    private static void mostrarReuniao(ObjectReuniao r) {
         System.out.println("ID " + r.Id());
-        System.out.println("ID ");
         System.out.println("Nome: " + r.Nome());
         System.out.println("Data: " + r.dataString());
         System.out.println("Horario: " + r.Horario());
@@ -156,36 +162,36 @@ public record ObjectReuniao(
 
         return r.Proprietario();
     }
-   /* public static void listarReuniao() {
+
+  /*  public static void listarReuniao() {
         var reuniao = Txt_Reuniao.lerTudo();
         for (var r : reuniao) {
             System.out.println();
             mostrarReuniao(r);
         }
+    }*/
+
+
+    private static String mostrarLista(ObjectReuniao r) {
+        var nomes = "";
+        var arrPart = ListaParticipantes.converterStringEmParticipantes(r.participantes);
+        for (var nome : arrPart) {
+
+            nomes += "    • " + nome + "\n";
+        }
+        return nomes;
     }
-*/
 
-
-private static String mostrarLista(ObjectReuniao r) {
-    var nomes = "";
-    var arrPart = ListaParticipantes.converterStringEmParticipantes(r.participantes);
-    for(var nome: arrPart){
-
-        nomes += "    • " + nome + "\n";
+    public static void listarReuniao() {
+        var reuniao = Txt_Reuniao.lerTudo();
+        var email = Cadastro_E_Login.Retornar_EmailLogado();
+        for (var r : reuniao) {
+            var emailtxt = mostrarProprietario(r);
+            if (email.equals(emailtxt)) {
+                System.out.println();
+                mostrarReuniao(r);
+            }
+        }
     }
-    return nomes;
-}
-   public static void listarReuniao() {
-       var reuniao = Txt_Reuniao.lerTudo();
-       var email = Cadastro_E_Login.Retornar_EmailLogado();
-       for (var r : reuniao) {
-           var emailtxt = mostrarProprietario(r);
-           if (email.equals(emailtxt)){
-               System.out.println();
-               mostrarReuniaos(r);
-           }
-       }
-   }
-
 
 }
