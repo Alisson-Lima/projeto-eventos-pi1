@@ -17,10 +17,9 @@ public class MenuPrincipal {
                             "|                                  |\n"+
                             "|    Escolha umas das opções:      |\n"+
                             "|                                  |\n"+
-                            "|    1 - Cadastrar Novo Evento     |\n"+
+                            "|    1 - Eventos                   |\n"+
                             "|    2 - Listar Eventos            |\n"+
                             "|    3 - Pesquisar Evento          |\n"+
-                            "|    4 - Deletar Evento            |\n"+
                             "|    X - Voltar ao Menu Inicial    |\n"+
                             "|                                  |\n"+
                             "|==================================|\n"
@@ -41,7 +40,7 @@ public class MenuPrincipal {
                 boolean reuniaoExiste = false;
 
                 if(File.arquivoExiste("Comicio.txt")) {
-                    System.out.println("_________Comicios_________");
+                    System.out.println("_________Comícios_________");
                     ObjectComicio.listarComicio();
                     System.out.println("_________________________\n");
 
@@ -74,8 +73,6 @@ public class MenuPrincipal {
                 }
 
             } else if (opcao.equals("3")) {
-
-            } else if (opcao.equals("4")) {
 
             } else if (opcao.equals("X")) {
                 return;

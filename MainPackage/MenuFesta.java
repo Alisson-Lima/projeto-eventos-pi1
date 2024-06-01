@@ -38,6 +38,26 @@ public class MenuFesta {
 
         private static void cadastrarFesta() {
             Boolean Disponivel = true;
+            boolean fileVerify = File.arquivoExiste("Festa.txt");
+            String id = "";
+            if (fileVerify) {
+                int idInt = 1;
+                String prefixo = "F";
+                String numero;
+                boolean verificacao;
+                do {
+                    numero = prefixo + idInt;
+                    verificacao = ObjectFesta.verifyId(numero);
+                    if (verificacao) {
+                        idInt++;
+                    }
+                } while (verificacao);
+                id = numero;
+            } else {
+                id = "F1";
+            }
+
+            var proprietario = Cadastro_E_Login.Retornar_EmailLogado();
 
             System.out.println();
             System.out.println("__________Cadasto da Festa_________\nNome da Festa: ");
@@ -82,7 +102,7 @@ public class MenuFesta {
                 Disponivel = false;
             }
 
-            var cadFesta = new ObjectFesta(Nome, Data, Horario ,Local, Descricao, LinhaParticipantes, Disponivel);
+            var cadFesta = new ObjectFesta(id, proprietario, Nome, Data, Horario ,Local, Descricao, LinhaParticipantes, Disponivel);
 
             Txt_Festa.salvar(cadFesta);
             System.out.println("Festa cadastrada");

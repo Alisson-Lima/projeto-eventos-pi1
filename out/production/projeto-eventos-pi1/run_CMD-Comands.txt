@@ -1,4 +1,4 @@
-
+cd C:\Users\wersington.sssacrame\Desktop\projeto-eventos-pi1
 javac Cadastro_E_Login.java File.java lerDados.java ListaParticipantes.java MenuComicio.java MenuFesta.java MenuInicial.java MenuPrincipal.java MenuReuniao.java MenuShow.java MenuTipos_Evento.java ObjectComicio.java ObjectFesta.java ObjectReuniao.java ObjectShow.java ObjectUser.java RegexFunctions.java Txt_Comicio.java Txt_Festa.java Txt_Reuniao.java Txt_Show.java Txt_User.java TxtLogado.java
 
-java MainPackage.Main
+java MainPackage.MenuInicial
