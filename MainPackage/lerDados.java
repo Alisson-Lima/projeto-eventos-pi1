@@ -151,7 +151,7 @@ public class lerDados {
 
             } catch (DateTimeException erro){
                 if (erro.getMessage().equals("Data inválida")) {
-                    System.out.println("\nAcredito que não seja possível criar um evento com a data de ontem.\n");
+                    System.out.println("\nAcredito que não seja possível criar um evento com a data anterior a hoje.\n");
                 }
 
             } System.out.print(tenteNovamente);

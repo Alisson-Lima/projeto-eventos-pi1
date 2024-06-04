@@ -16,10 +16,8 @@ public record ObjectComicio
                 String Id,
                 String Proprietario,
                 String Nome,
-                LocalDate DataInicio,
-                LocalDate DataFim,
-                LocalTime HorarioInicio,
-                LocalTime HorarioFim,
+                LocalDate Data,
+                LocalTime Horario,
                 String Local,
                 String Partido,
                 String Descricao,
@@ -39,24 +37,16 @@ public record ObjectComicio
             .withResolverStyle(ResolverStyle.STRICT);
 
 
-    public String dataInicioString() {
-        return DATA.format(DataInicio);
+    public String dataString() {
+        return DATA.format(Data);
     }
 
-    public String dataFimString() {
-        return DATA.format(DataFim);
-    }
-
-    public String horarioInicioString() {
-        return HORA.format(HorarioInicio);
-    }
-
-    public String horarioFimString() {
-        return HORA.format(HorarioFim);
+    public String horarioString() {
+        return HORA.format(Horario);
     }
 
     public List<String> desconstruir() {
-        return List.of(Id, Proprietario, Nome, dataInicioString(), dataFimString(), horarioInicioString(), horarioFimString(), Local, Partido, Descricao, "" + Autorizacao);
+        return List.of(Id, Proprietario, Nome, dataString(), horarioString(),Local, Partido, Descricao, "" + Autorizacao);
     }
 
 
@@ -76,13 +66,11 @@ public record ObjectComicio
                 listinha.get(1),
                 listinha.get(2),
                 LocalDate.parse(listinha.get(3), DATA),
-                LocalDate.parse(listinha.get(4), DATA),
-                LocalTime.parse(listinha.get(5), HORA),
-                LocalTime.parse(listinha.get(6), HORA),
+                LocalTime.parse(listinha.get(4), HORA),
+                listinha.get(5),
+                listinha.get(6),
                 listinha.get(7),
-                listinha.get(8),
-                listinha.get(9),
-                Boolean.parseBoolean(listinha.get(10))
+                Boolean.parseBoolean(listinha.get(8))
         );
     }
 
@@ -110,19 +98,10 @@ public record ObjectComicio
     }
 
     public static Optional<ObjectComicio> buscardatainicio(List<ObjectComicio> tudo, LocalDate dataInicioPocruada) {
-        return tudo.stream().filter(c -> c.DataInicio().equals(dataInicioPocruada)).findAny();
+        return tudo.stream().filter(c -> c.Data().equals(dataInicioPocruada)).findAny();
     }
-
-    public static Optional<ObjectComicio> buscardatafim(List<ObjectComicio> tudo, LocalDate dataFimPocruada) {
-        return tudo.stream().filter(c -> c.DataFim().equals(dataFimPocruada)).findAny();
-    }
-
-    public static Optional<ObjectComicio> buscarhorarioinicio(List<ObjectComicio> tudo, LocalDate horarioInicioProcurado) {
-        return tudo.stream().filter(c -> c.HorarioInicio().equals(horarioInicioProcurado)).findAny();
-    }
-
-    public static Optional<ObjectComicio> buscarhorariofim(List<ObjectComicio> tudo, LocalDate horarioFimProcurado) {
-        return tudo.stream().filter(c -> c.HorarioInicio().equals(horarioFimProcurado)).findAny();
+        public static Optional<ObjectComicio> buscarhorariofim(List<ObjectComicio> tudo, LocalDate horarioFimProcurado) {
+        return tudo.stream().filter(c -> c.Horario().equals(horarioFimProcurado)).findAny();
     }
 
     public static Optional<ObjectComicio> buscarLocal(List<ObjectComicio> tudo, String localProcurado) {
@@ -143,7 +122,7 @@ public record ObjectComicio
         }
     }
 
-    public static String buscarId(String idComicio) {
+    public static String buscarid(String idComicio) {
 
         System.out.print("\nDigite o ID: ");
 
@@ -163,22 +142,38 @@ public record ObjectComicio
     }
 
     private static void mostrarComicio(ObjectComicio c) {
+        System.out.println("ID " + c.Id());
         System.out.println("Nome: " + c.Nome());
-        System.out.println("Data: " + c.DataInicio());
-        System.out.println("Data: " + c.DataFim());
-        System.out.println("Horario Inicial: " + c.HorarioInicio());
-        System.out.println("Horario de Termino: " + c.HorarioFim());
+        System.out.println("Data: " + c.Data());
+        System.out.println("Horario: " + c.Horario());
         System.out.println("Local: " + c.Local());
         System.out.println("Partido: " + c.Partido());
         System.out.println("Descrição: " + c.Descricao());
         System.out.println("Autorização: " + c.Autorizacao());
     }
 
-    public static void listarComicio() {
+    private static String mostrarProprietario(ObjectComicio c) {
+
+        return c.Proprietario();
+    }
+
+  /*  public static void listarComicio() {
         var comicio = Txt_Comicio.lerTudo();
         for (var c : comicio) {
             System.out.println();
             mostrarComicio(c);
+        }
+    }*/
+
+    public static void listarComicio() {
+        var comicio = Txt_Comicio.lerTudo();
+        var email = Cadastro_E_Login.Retornar_EmailLogado();
+        for (var c : comicio) {
+            var emailtxt = mostrarProprietario(c);
+            if (email.equals(emailtxt)){
+            System.out.println();
+            mostrarComicio(c);
+            }
         }
     }
 

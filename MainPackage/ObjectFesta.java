@@ -11,7 +11,8 @@ import  java.util.List;
 import java.util.ArrayList;
 
 public record ObjectFesta(
-
+        String Id,
+        String Proprietario,
         String Nome,
         LocalDate Data,
         LocalTime Horario,
@@ -46,7 +47,7 @@ public record ObjectFesta(
 
     public List<String> desconstruir() {
 
-        return List.of(Nome, dataString(), horarioString(), Local, Descricao, "" + participantes, "" + Disponivel);
+        return List.of(Id, Proprietario,Nome, dataString(), horarioString(), Local, Descricao, "" + participantes, "" + Disponivel);
     }
 
 
@@ -68,12 +69,14 @@ public record ObjectFesta(
         return new ObjectFesta(
 
                 listinha.get(0),
-                LocalDate.parse(listinha.get(1), DATA),
-                LocalTime.parse(listinha.get(2), HORA),
-                listinha.get(3),
-                listinha.get(4),
+                listinha.get(1),
+                listinha.get(2),
+                LocalDate.parse(listinha.get(3), DATA),
+                LocalTime.parse(listinha.get(4), HORA),
                 listinha.get(5),
-                Boolean.parseBoolean(listinha.get(6))
+                listinha.get(6),
+                listinha.get(7),
+                Boolean.parseBoolean(listinha.get(8))
 
         );
     }
@@ -100,6 +103,10 @@ public record ObjectFesta(
     public static Optional<ObjectFesta> buscarhorario(List<ObjectFesta> tudo, String horarioprocurado) {
         return tudo.stream().filter(f -> f.Horario().equals(horarioprocurado)).findAny();
     }
+    public static Optional<ObjectFesta> buscarId(List<ObjectFesta> tudo, String idProcurado) {
+        return tudo.stream().filter(f -> f.Id().equals(idProcurado)).findAny();
+    }
+
     public static Optional<ObjectFesta> buscarData(List<ObjectFesta> tudo, String dataProcurada) {
         return tudo.stream().filter(f -> f.Data().equals(dataProcurada)).findAny();
     }
@@ -130,14 +137,59 @@ public record ObjectFesta(
         }
         System.out.println("Ingressos Disponiveis: " + f.Disponivel());
     }
+    private static void mostrarFestas(ObjectFesta f) {
+        System.out.println("ID " + f.Id());
+        System.out.println("Nome: " + f.Nome());
+        System.out.println("Data: " + f.dataString());
+        System.out.println("Horario: " + f.Horario());
+        System.out.println("Local: " + f.Local());
+        System.out.println("Descrição: " + f.Descricao());
+        System.out.println("Participantes:");
+        System.out.println(mostrarLista(f));
+        System.out.println("Ingressos Disponiveis: " + f.Disponivel());
+    }
+    public static boolean verifyId(String idFesta) {
 
+        var festa = Txt_Festa.lerTudo();
+        var encontrou = ObjectFesta.buscarId(festa, idFesta);
+        return encontrou.isPresent();
+    }
+
+    private static String mostrarProprietario(ObjectFesta f) {
+
+        return f.Proprietario();
+    } private static String mostrarLista(ObjectFesta f) {
+        var nomes = "";
+        var arrPart = ListaParticipantes.converterStringEmParticipantes(f.participantes);
+        for(var nome: arrPart){
+
+            nomes += "    • " + nome + "\n";
+        }
+        return nomes;
+    }
+
+    /*
     public static void listarFesta() {
         var festa = Txt_Festa.lerTudo();
         for (var f : festa) {
             System.out.println();
             mostrarFesta(f);
         }
+    }*/
+
+
+    public static void listarFesta() {
+        var festa = Txt_Festa.lerTudo();
+        var email = Cadastro_E_Login.Retornar_EmailLogado();
+        for (var f : festa) {
+            var emailtxt = mostrarProprietario(f);
+            if (email.equals(emailtxt)){
+                System.out.println();
+                mostrarFestas(f);
+            }
+        }
     }
+
 }
 
 

@@ -32,6 +32,27 @@ public class MenuShow {
         private static void cadastrarShow() {
             Boolean ingressosDisponiveis = true;
 
+            boolean fileVerify = File.arquivoExiste("Show.txt");
+            String id = "";
+            if (fileVerify) {
+                int idInt = 1;
+                String prefixo = "S";
+                String numero;
+                boolean verificacao;
+                do {
+                    numero = prefixo + idInt;
+                    verificacao = ObjectShow.verifyId(numero);
+                    if (verificacao) {
+                        idInt++;
+                    }
+                } while (verificacao);
+                id = numero;
+            } else {
+                id = "S1";
+            }
+
+            var proprietario = Cadastro_E_Login.Retornar_EmailLogado();
+
             System.out.println();
             System.out.println("__________Cadasto de Show_________\nNome do Show: ");
             var nome = lerDados.lerTexto("Inválido Tente novamente:\n");
@@ -57,10 +78,12 @@ public class MenuShow {
             if(ingressos.equals("n")){
                ingressosDisponiveis = false;
             }
+            System.out.println("Digite o valor do ingresso em R$: ");
+            var precodoingresso = lerDados.lerDouble("Valor incorreto, tente algo como R$ 2.00");
 
-            var showcad = new ObjectShow(nome, data, horario, local, descricao, limiteIngressos, ingressosDisponiveis);
+            var showcad = new ObjectShow(id, proprietario, nome, data, horario, local, descricao, limiteIngressos, ingressosDisponiveis,precodoingresso);
             Txt_Show.salvar(showcad);
-            System.out.println("Show cadastrado");
+            System.out.println("******* Show cadastrado *******");
         }
 
 }

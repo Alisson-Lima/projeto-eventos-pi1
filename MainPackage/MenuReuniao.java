@@ -39,6 +39,27 @@ public class MenuReuniao {
     private static void cadastrarReuniao() {
         Boolean Disponivel = true;
 
+        boolean fileVerify = File.arquivoExiste("Reuniao.txt");
+        String id = "";
+        if (fileVerify) {
+            int idInt = 1;
+            String prefixo = "R";
+            String numero;
+            boolean verificacao;
+            do {
+                numero = prefixo + idInt;
+                verificacao = ObjectReuniao.verifyId(numero);
+                if (verificacao) {
+                    idInt++;
+                }
+            } while (verificacao);
+            id = numero;
+        } else {
+            id = "R1";
+        }
+
+        var proprietario = Cadastro_E_Login.Retornar_EmailLogado();
+
         System.out.println();
         System.out.println("__________Cadasto da Reunião_________\nNome da Reunião: ");
         var Nome = lerDados.lerTexto("Opção Inválida\n");
@@ -75,7 +96,7 @@ public class MenuReuniao {
 
         String LinhaParticipantes = converterArrayParticipantesEmString(Participantes);
 
-        var cadReuniao = new ObjectReuniao(Nome, Data, Horario ,Local, Descricao, LinhaParticipantes, Disponivel);
+        var cadReuniao = new ObjectReuniao(id, proprietario, Nome, Data, Horario ,Local, Descricao, LinhaParticipantes, Disponivel);
 
         Txt_Reuniao.salvar(cadReuniao);
         System.out.println("******* Reunião cadastrada *******");
