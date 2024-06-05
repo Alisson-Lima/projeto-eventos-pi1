@@ -38,24 +38,24 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 ## 4. Fluxograma das Funcionalidades do Sistema
 
 ![imagem](/Fluxogramas/LOGIN.jpg)
-### Fluxograma da funcionalidade de Login
-## Nessa imagem é possivel visualizar a lógica por trás das funcionalidades 
+## Fluxograma da funcionalidade de Login
+### Nessa imagem é possivel visualizar a lógica por trás das funcionalidades 
 
 ![imagem](/Fluxogramas/COMICIO.jpg)
-### Fluxograma das funcionalidades de opção de Comicio
-## Nessa imagem é possivel visualizar a lógica por trás das funcionalidades 
+## Fluxograma das funcionalidades de opção de Comicio
+### Nessa imagem é possivel visualizar a lógica por trás das funcionalidades 
 
 ![imagem](/Fluxogramas/FESTA.jpg)
-### Fluxograma das funcionalidades de opção de Festa
-## Nessa imagem é possivel visualizar a lógica por trás das funcionalidades 
+## Fluxograma das funcionalidades de opção de Festa
+### Nessa imagem é possivel visualizar a lógica por trás das funcionalidades 
 
 ![imagem](/Fluxogramas/REUNIAO.jpg)
-### Fluxograma das funcionalidades de opção de Reunião
-## Nessa imagem é possivel visualizar a lógica por trás das funcionalidades 
+## Fluxograma das funcionalidades de opção de Reunião
+### Nessa imagem é possivel visualizar a lógica por trás das funcionalidades 
 
 ![imagem](/Fluxogramas/SHOW.jpg)
-### Fluxograma das funcionalidades de opção de Show
-## Nessa imagem é possivel visualizar a lógica por trás das funcionalidades 
+## Fluxograma das funcionalidades de opção de Show
+### Nessa imagem é possivel visualizar a lógica por trás das funcionalidades 
 
 
 Você pode colocar [alguns links no seu texto](https://google.com).
