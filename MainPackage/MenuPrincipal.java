@@ -19,6 +19,7 @@ public class MenuPrincipal {
                             "|                                  |\n"+
                             "|    1 - Eventos                   |\n"+
                             "|    2 - Listar Eventos            |\n"+
+                            "|    3 - Pesquisar Evento          |\n"+
                             "|    X - Voltar ao Menu Inicial    |\n"+
                             "|                                  |\n"+
                             "|==================================|\n"
@@ -40,25 +41,28 @@ public class MenuPrincipal {
 
                 if(File.arquivoExiste("Comicio.txt")) {
                     ObjectComicio.listarComicio();
+
                     comicioExiste = true;
                 }
                 if(File.arquivoExiste("Festa.txt")) {
                     ObjectFesta.listarFesta();
+
                     festaExiste = true;
                 }
                 if(File.arquivoExiste("Show.txt")) {
                     ObjectShow.listarShow();
+
                     showExiste = true;
                 }
                 if(File.arquivoExiste("Reuniao.txt")) {
                     ObjectReuniao.listarReuniao();
+
                     reuniaoExiste = true;
                 }
 
                 if(comicioExiste == false && festaExiste == false && showExiste == false && reuniaoExiste == false){
-                    System.out.println("\n----Nenhum evento foi cadastrado ainda!----");
+                    System.out.println("\nNenhum evento foi cadastrado ainda!");
                 }
-
 
             } else if (opcao.equals("3")) {
                 System.out.println(
