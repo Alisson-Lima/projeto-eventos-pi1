@@ -47,7 +47,7 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 ### Nessa imagem é possível visualizar a lógica por trás das funcionalidades 
 
 ### Fluxograma das funcionalidades de opção de Comício
-* Ao iniciar, o usuário recebe uma lista de opções: cadastrar um novo comício, editar um comício, pesquisar e listar todos os comícios. Ao escolher executar o cadastro, você deverá digitar todas as informações solicitadas para que seja verificada a disponibilidade dessa data e local e, assim, possa concluir a criação do comício. Na opção de editar, você deverá selecionar qual deseja editar e, logo após, editar o que deseja. Na opção de pesquisar, você deve digitar o nome do comício que deseja e, assim, será mostrado. Por fim, na opção listar, ele mostrará todos os comícios criados.
+* Ao iniciar, o usuário recebe uma lista de opções: cadastrar um novo comício, pesquisar e listar todos os comícios. Ao escolher executar o cadastro, você deverá digitar todas as informações solicitadas para que seja verificada a disponibilidade dessa data e local e, assim, possa concluir a criação do comício. Na opção de pesquisar, você deve digitar o nome do comício que deseja e, assim, será mostrado. Por fim, na opção listar, ele mostrará todos os comícios criados.
 
 ### As exceções
 * Caso a data ou horário esteja fora do modelo, solicita que escreva novamente.
@@ -58,7 +58,7 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 ### Nessa imagem é possível visualizar a lógica por trás das funcionalidades 
 
 ### Fluxograma das funcionalidades de opção de Festa
-* Ao iniciar, o usuário recebe uma lista de opções: cadastrar uma nova festa, editar uma festa, pesquisar e listar todas as festas. Ao escolher executar o cadastro, você deverá digitar todas as informações solicitadas para que seja verificada a disponibilidade dessa data e local, juntamente com a lista de convidados, e, assim, possa concluir a criação da festa. Na opção de editar, você deverá selecionar qual deseja editar e, logo após, editar o que deseja. Na opção de pesquisar, você deve digitar o nome da festa que deseja e, assim, será mostrado. Por fim, na opção listar, ele mostrará todas as festas criadas.
+* Ao iniciar, o usuário recebe uma lista de opções: cadastrar uma nova festa, pesquisar e listar todas as festas. Ao escolher executar o cadastro, você deverá digitar todas as informações solicitadas para que seja verificada a disponibilidade dessa data e local, juntamente com a lista de convidados, e, assim, possa concluir a criação da festa. Na opção de pesquisar, você deve digitar o nome da festa que deseja e, assim, será mostrado. Por fim, na opção listar, ele mostrará todas as festas criadas.
 
 ### As exceções
 * Caso a data ou horário esteja fora do modelo, solicita que escreva novamente.
@@ -68,7 +68,7 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 ### Nessa imagem é possível visualizar a lógica por trás das funcionalidades 
 
 ### Fluxograma das funcionalidades de opção de Reunião
-* Ao iniciar, o usuário recebe uma lista de opções: cadastrar uma nova reunião, editar uma reunião, pesquisar e listar todas as reuniões. Ao escolher executar o cadastro, você deverá digitar todas as informações solicitadas para que possa concluir a criação da reunião. Na opção de editar, você deverá selecionar qual deseja editar e, logo após, editar o que deseja. Na opção de pesquisar, você deve digitar o nome da reunião que deseja e, assim, será mostrado. Por fim, na opção listar, ele mostrará todas as reuniões criadas.
+* Ao iniciar, o usuário recebe uma lista de opções: cadastrar uma nova reunião, pesquisar e listar todas as reuniões. Ao escolher executar o cadastro, você deverá digitar todas as informações solicitadas para que possa concluir a criação da reunião. Na opção de pesquisar, você deve digitar o nome da reunião que deseja e, assim, será mostrado. Por fim, na opção listar, ele mostrará todas as reuniões criadas.
 
 ### As exceções
 * Caso a data ou horário esteja fora do modelo, solicita que escreva novamente.
@@ -78,7 +78,7 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 ### Nessa imagem é possível visualizar a lógica por trás das funcionalidades 
 
 ### Fluxograma das funcionalidades de opção de Show
-* Ao iniciar, o usuário recebe uma lista de opções: cadastrar um novo show, editar um show, pesquisar e listar todos os shows. Ao escolher executar o cadastro, você deverá digitar todas as informações solicitadas para que possa concluir a criação do show e definir o número de ingressos disponíveis. Na opção de editar, você deverá selecionar qual deseja editar e, logo após, editar o que deseja. Na opção de pesquisar, você deve digitar o nome do show que deseja e, assim, será mostrado. Por fim, na opção listar, ele mostrará todos os shows criados.
+* Ao iniciar, o usuário recebe uma lista de opções: cadastrar um novo show, pesquisar e listar todos os shows. Ao escolher executar o cadastro, você deverá digitar todas as informações solicitadas para que possa concluir a criação do show e definir o número de ingressos disponíveis. Na opção de pesquisar, você deve digitar o nome do show que deseja e, assim, será mostrado. Por fim, na opção listar, ele mostrará todos os shows criados.
 
 ### As exceções
 * Caso a data ou horário esteja fora do modelo, solicita que escreva novamente.
