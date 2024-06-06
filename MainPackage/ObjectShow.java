@@ -108,6 +108,26 @@ public record ObjectShow (
             mostrarShow(encontrou.get());
         }
     }
+    public static void buscarids() {
+
+        System.out.print("\nDigite o ID: ");
+        var idShow = lerDados.lerTexto("Inválido");
+        var show = Txt_Show.lerTudo();
+        var encontrou = ObjectShow.buscarid((show), idShow.toUpperCase());
+        var email = Cadastro_E_Login.Retornar_EmailLogado();
+        if (encontrou.isEmpty()) {
+            System.out.println("Não encontrei esse id.");
+        }else{
+            var emailtxt = mostrarProprietario(encontrou.get());
+            if(email.equals(emailtxt)){
+                mostrarShow(encontrou.get());
+            }else{
+                System.out.println("Não encontrei esse id.");
+            }
+
+        }
+    }
+
 
     public static String buscarId(String idShow) {
 
@@ -168,16 +188,16 @@ public record ObjectShow (
     public static void cadVenda(){
         Boolean respostinha = false;
 
-        System.out.println("De qual evento você deseja cadastrar a venda: ");
+        System.out.println("Qual ID do evento você deseja cadastrar a venda: ");
         var nomeEvento = lerDados.lerTexto("Inválido tente novamente:");
         var shows = Txt_Show.lerTudo();
-        var nomeShow = ObjectShow.buscarNome(shows,nomeEvento);
+        var idShow = ObjectShow.buscarid(shows,nomeEvento.toUpperCase());
 
-        if(nomeShow.isEmpty()){
+        if(idShow.isEmpty()){
             System.out.println("Show não encontrado");
             return;
         }
-            ObjectShow show = nomeShow.get();
+            ObjectShow show = idShow.get();
         if(!show.ingressosDisponiveis()){
             System.out.println("Não há ingressos disponíveis");
             System.out.println("Deseja que os ingressos fiquem disponíveis: [S]Sim [N]Não");

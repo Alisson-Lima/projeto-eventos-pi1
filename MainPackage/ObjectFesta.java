@@ -124,7 +124,28 @@ public record ObjectFesta(
         }
     }
 
+    public static void buscarids() {
+
+        System.out.print("\nDigite o ID: ");
+        var idFesta = lerDados.lerTexto("Inválido");
+        var festa = Txt_Festa.lerTudo();
+        var encontrou = ObjectFesta.buscarId((festa), idFesta.toUpperCase());
+        var email = Cadastro_E_Login.Retornar_EmailLogado();
+        if (encontrou.isEmpty()) {
+            System.out.println("Não encontrei esse id.");
+        }else{
+            var emailtxt = mostrarProprietario(encontrou.get());
+            if(email.equals(emailtxt)){
+                mostrarFesta(encontrou.get());
+            }else{
+                System.out.println("Não encontrei esse id.");
+            }
+
+        }
+    }
+
     private static void mostrarFesta(ObjectFesta f) {
+        System.out.println("ID: " + f.Id());
         System.out.println("Nome: " + f.Nome());
         System.out.println("Data: " + f.dataString());
         System.out.println("Horario: " + f.Horario());

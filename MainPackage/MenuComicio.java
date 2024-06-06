@@ -20,11 +20,9 @@ public class MenuComicio {
             if (escolha.equals("1")) {
                 cadastrarComicio();
             }else if (escolha.equals("2")) {
-                ObjectComicio.buscarComicio();
-                return;
+                ObjectComicio.buscarids();
             }else if (escolha.equals("3")) {
                 ObjectComicio.listarComicio();
-                return;
             } else if (escolha.equals("X")) {
                 return;
             }
@@ -83,6 +81,14 @@ public class MenuComicio {
 
         var cadcomicio = new ObjectComicio(id, proprietario, nome, data, horario ,local, partido, descricao, autorizacao);
         Txt_Comicio.salvar(cadcomicio);
+        System.out.println("ID " + id);
+        System.out.println("Nome: " + nome);
+        System.out.println("Data: " + data);
+        System.out.println("Horario: " + horario);
+        System.out.println("Local: " + local);
+        System.out.println("Partido: " + partido);
+        System.out.println("Descrição: " + descricao);
+        System.out.println("Autorização: " + autorizacao);
         System.out.println("******* Comício cadastrado *******");
     }
 }

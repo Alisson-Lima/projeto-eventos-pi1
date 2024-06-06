@@ -24,11 +24,9 @@ public class MenuFesta {
                 if (escolha.equals("1")) {
                     cadastrarFesta();
                 }else if (escolha.equals("2")) {
-                    ObjectFesta.buscarFesta();
-                    return;
+                    ObjectFesta.buscarids();
                 }else if (escolha.equals("3")) {
                     ObjectFesta.listarFesta();
-                    return;
                 } else if (escolha.equals("X")) {
                     return;
                 }
@@ -105,6 +103,18 @@ public class MenuFesta {
             var cadFesta = new ObjectFesta(id, proprietario, Nome, Data, Horario ,Local, Descricao, LinhaParticipantes, Disponivel);
 
             Txt_Festa.salvar(cadFesta);
+            System.out.println("ID: " + id);
+            System.out.println("Nome: " + Nome);
+            System.out.println("Data: " + Data);
+            System.out.println("Horario: " + Horario);
+            System.out.println("Local: " + Local);
+            System.out.println("Descrição: " + Descricao);
+            System.out.println("Participantes:");
+            var arrPart = ListaParticipantes.converterStringEmParticipantes(LinhaParticipantes);
+            for(var nome: arrPart){
+                System.out.println("    • " + nome);
+            }
+            System.out.println("Ingressos Disponiveis: " + Disponivel);
             System.out.println("Festa cadastrada");
         }
     }

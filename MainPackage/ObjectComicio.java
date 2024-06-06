@@ -122,16 +122,24 @@ public record ObjectComicio
         }
     }
 
-    public static String buscarid(String idComicio) {
+    public static void buscarids() {
 
         System.out.print("\nDigite o ID: ");
-
+        var idComicio = lerDados.lerTexto("Inválido");
         var comicios = Txt_Comicio.lerTudo();
-        var encontrou = ObjectComicio.buscarId(comicios, idComicio);
+        var encontrou = ObjectComicio.buscarId((comicios), idComicio.toUpperCase());
+        var email = Cadastro_E_Login.Retornar_EmailLogado();
         if (encontrou.isEmpty()) {
             System.out.println("Não encontrei esse id.");
+        }else{
+            var emailtxt = mostrarProprietario(encontrou.get());
+            if(email.equals(emailtxt)){
+                mostrarComicio(encontrou.get());
+            }else{
+            System.out.println("Não encontrei esse id.");
+            }
+
         }
-        return encontrou.toString();
     }
 
     public static boolean verifyId(String idComicio) {

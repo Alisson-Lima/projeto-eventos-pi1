@@ -23,11 +23,9 @@ public class MenuReuniao {
             if (escolha.equals("1")) {
                 cadastrarReuniao();
             }else if (escolha.equals("2")) {
-                ObjectReuniao.buscarReuniao();
-                return;
+                ObjectReuniao.buscarids();
             }else if (escolha.equals("3")) {
                 ObjectReuniao.listarReuniao();
-                return;
             } else if (escolha.equals("X")) {
                 return;
             }
@@ -99,6 +97,17 @@ public class MenuReuniao {
         var cadReuniao = new ObjectReuniao(id, proprietario, Nome, Data, Horario ,Local, Descricao, LinhaParticipantes, Disponivel);
 
         Txt_Reuniao.salvar(cadReuniao);
+
+        System.out.println("ID " + id);
+        System.out.println("Nome: " + Nome);
+        System.out.println("Data: " + Data);
+        System.out.println("Horario: " + Horario);
+        System.out.println("Local: " + Local);
+        System.out.println("Descrição: " + Descricao);
+        System.out.println("Participantes:");
+        var arrPart = ListaParticipantes.converterStringEmParticipantes(LinhaParticipantes);
+        for (var nome : arrPart) {
+            System.out.println("    • " + nome);}
         System.out.println("******* Reunião cadastrada *******");
     }
 
