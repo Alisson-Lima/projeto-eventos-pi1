@@ -21,9 +21,6 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 ### Criar 
 - Cada tipo de evento tem a opção de permitir ao usuário cadastrar novos eventos no sistema, especificando detalhes como nome, tipo, data, local, descrição e outros pontos que são específicos de cada tipo de evento.
 
-### Editar 
-- Cada tipo de evento tem a opção de permitir ao usuário editar as informações de eventos previamente cadastrados. Todas as informações do evento podem ser atualizadas conforme necessário, para melhor se adaptar às necessidades dos usuários.
-
 ### Buscar 
 - Cada tipo de evento tem a opção de permitir ao usuário buscar eventos cadastrados no sistema utilizando seus IDs específicos, como por exemplo o nome do evento, dando mais segurança e capacidade para gerenciar seus eventos.
 
