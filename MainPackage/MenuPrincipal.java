@@ -19,7 +19,6 @@ public class MenuPrincipal {
                             "|                                  |\n"+
                             "|    1 - Eventos                   |\n"+
                             "|    2 - Listar Eventos            |\n"+
-                            "|    3 - Pesquisar Evento          |\n"+
                             "|    X - Voltar ao Menu Inicial    |\n"+
                             "|                                  |\n"+
                             "|==================================|\n"
@@ -40,39 +39,33 @@ public class MenuPrincipal {
                 boolean reuniaoExiste = false;
 
                 if(File.arquivoExiste("Comicio.txt")) {
-                    System.out.println("_________Comícios_________");
+
                     ObjectComicio.listarComicio();
-                    System.out.println("_________________________\n");
 
                     comicioExiste = true;
                 }
                 if(File.arquivoExiste("Festa.txt")) {
-                    System.out.println("_________Festas_________");
+
                     ObjectFesta.listarFesta();
-                    System.out.println("_________________________\n");
 
                     festaExiste = true;
                 }
                 if(File.arquivoExiste("Show.txt")) {
-                    System.out.println("_________Shows_________");
+
                     ObjectShow.listarShow();
-                    System.out.println("_________________________\n");
 
                     showExiste = true;
                 }
                 if(File.arquivoExiste("Reuniao.txt")) {
-                    System.out.println("_________Reuniões_________");
+
                     ObjectReuniao.listarReuniao();
-                    System.out.println("_________________________\n");
 
                     reuniaoExiste = true;
                 }
 
                 if(comicioExiste == false && festaExiste == false && showExiste == false && reuniaoExiste == false){
-                    System.out.println("\nNenhum evento foi cadastrado ainda!");
+                    System.out.println("\n----Nenhum evento foi cadastrado ainda!----");
                 }
-
-            } else if (opcao.equals("3")) {
 
             } else if (opcao.equals("X")) {
                 return;
