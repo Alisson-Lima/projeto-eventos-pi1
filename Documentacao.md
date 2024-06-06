@@ -4,7 +4,7 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 
 ## 1. Equipe de Desenvolvedores
 
-- Eric 
+- Eric  
 - Alisson 
 - Guilherme Denobi 
 - Wersington
@@ -43,7 +43,7 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 * Caso a data de aniversário esteja fora do modelo, solicita que escreva novamente.
 * Caso o CPF ou CNPJ esteja errado, solicita novamente.
 
-![imagem](/Fluxogramas/LOGIN.jpg)
+![imagem](/Fluxogramas/LOGIN-d.jpg)
 ### Nessa imagem é possível visualizar a lógica por trás das funcionalidades 
 
 ### Fluxograma das funcionalidades de opção de Comício
@@ -54,7 +54,7 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 * Caso a data ou horário seja do passado, ele solicita uma data válida, pois não é possível organizar um evento com data anterior à atual.
 * Caso na opção de "possui autorização" marque a opção "não", ele não cria o evento.
 
-![imagem](/Fluxogramas/COMICIO.jpg)
+![imagem](/Fluxogramas/COMICIO-d.jpg)
 ### Nessa imagem é possível visualizar a lógica por trás das funcionalidades 
 
 ### Fluxograma das funcionalidades de opção de Festa
@@ -64,7 +64,7 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 * Caso a data ou horário esteja fora do modelo, solicita que escreva novamente.
 * Caso a data ou horário seja do passado, ele solicita uma data válida, pois não é possível organizar um evento com data anterior à atual.
 
-![imagem](/Fluxogramas/FESTA.jpg)
+![imagem](/Fluxogramas/FESTA-d.jpg)
 ### Nessa imagem é possível visualizar a lógica por trás das funcionalidades 
 
 ### Fluxograma das funcionalidades de opção de Reunião
@@ -74,7 +74,7 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 * Caso a data ou horário esteja fora do modelo, solicita que escreva novamente.
 * Caso a data ou horário seja do passado, ele solicita uma data válida, pois não é possível organizar um evento com data anterior à atual.
 
-![imagem](/Fluxogramas/REUNIAO.jpg)
+![imagem](/Fluxogramas/REUNIAO-d.jpg)
 ### Nessa imagem é possível visualizar a lógica por trás das funcionalidades 
 
 ### Fluxograma das funcionalidades de opção de Show
@@ -85,13 +85,15 @@ O Projeto X é um sistema desenvolvido para facilitar a organização e gerencia
 * Caso a data ou horário seja do passado, ele solicita uma data válida, pois não é possível organizar um evento com data anterior à atual.
 * Caso, na opção de editar, ao definir a quantidade de ingressos vendidos, coloque um número maior que o disponível, ele impede a venda.
 
-![imagem](/Fluxogramas/SHOW.jpg)
+![imagem](/Fluxogramas/SHOW-d.jpg)
 ### Nessa imagem é possível visualizar a lógica por trás das funcionalidades 
 
 
 
 
 ## - Os Fluxogramas foram gerado pelo [app.diagrams](https://app.diagrams.net)
+
+## Projeto desenvolvido por *ProjectXDevs*
 
 
 
