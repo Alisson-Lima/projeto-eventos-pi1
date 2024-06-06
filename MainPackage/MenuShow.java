@@ -18,7 +18,7 @@ public class MenuShow {
             if (escolha.equals("1")) {
                 cadastrarShow();
             } else if(escolha.equals("2")) {
-                ObjectShow.buscarShow();
+                ObjectShow.buscarids();
             }else if(escolha.equals("3")){
                 ObjectShow.listarShow();
             }else if(escolha.equals("4")){
@@ -83,6 +83,15 @@ public class MenuShow {
 
             var showcad = new ObjectShow(id, proprietario, nome, data, horario, local, descricao, limiteIngressos, ingressosDisponiveis,precodoingresso);
             Txt_Show.salvar(showcad);
+            System.out.println("ID " + id);
+            System.out.println("Nome: " + nome);
+            System.out.println("Data: " + data);
+            System.out.println("Horario: " + horario);
+            System.out.println("Local: " + local);
+            System.out.println("Descrição: " + descricao);
+            System.out.println("Limite de Ingressos: " + limiteIngressos);
+            System.out.println("Ingressos Disponiveis: " + ingressosDisponiveis);
+            System.out.println("Valor do ingresso: R$"+ precodoingresso);
             System.out.println("******* Show cadastrado *******");
         }
 

@@ -125,6 +125,26 @@ public record ObjectReuniao(
         }
     }
 
+    public static void buscarids() {
+
+        System.out.print("\nDigite o ID: ");
+        var idReuniao = lerDados.lerTexto("Inválido");
+        var reuniao = Txt_Reuniao.lerTudo();
+        var encontrou = ObjectReuniao.buscarId((reuniao), idReuniao.toUpperCase());
+        var email = Cadastro_E_Login.Retornar_EmailLogado();
+        if (encontrou.isEmpty()) {
+            System.out.println("Não encontrei esse id.");
+        }else{
+            var emailtxt = mostrarProprietario(encontrou.get());
+            if(email.equals(emailtxt)){
+                mostrarReuniao(encontrou.get());
+            }else{
+                System.out.println("Não encontrei esse id.");
+            }
+
+        }
+    }
+
     public static boolean verifyId(String idReuniao) {
 
         var reuniao = Txt_Reuniao.lerTudo();
